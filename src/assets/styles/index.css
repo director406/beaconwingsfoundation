@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Brand color tokens (light) ──────────────────────── */
+:root {
+  --color-primary: 45 122 79;     /* #2D7A4F  forest green   */
+  --color-accent:  232 135 74;    /* #E8874A  warm peach     */
+  --color-surface: 240 250 244;   /* #F0FAF4  soft mint      */
+}
+
+/* ── Brand color tokens (dark) ───────────────────────── */
+.dark {
+  --color-primary: 77 184 126;    /* #4DB87E  mint green     */
+  --color-accent:  240 160 112;   /* #F0A070  light peach    */
+  --color-surface: 26 46 34;      /* #1A2E22  deep forest    */
+}
+
+/* ── Global base styles ──────────────────────────────── */
+body {
+  @apply bg-white text-slate-800 antialiased;
+}
+
+html.dark body {
+  background-color: #0d1b14;   /* deep forest night  */
+  color: #cbd5e1;              /* slate-300          */
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+#root {
+  @apply min-h-screen;
+}
+
+/* ── Layout helper ───────────────────────────────────── */
+.container-max {
+  @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+
+/* ── Smooth colour transitions ───────────────────────── */
+*,
+*::before,
+*::after {
+  transition-property: background-color, border-color, color;
+  transition-duration: 150ms;
+  transition-timing-function: ease;
+}
+
+/* Opt-out for transforms / animations that shouldn't be slowed */
+.no-transition,
+.no-transition * {
+  transition: none !important;
+}
