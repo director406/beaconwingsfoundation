@@ -23,15 +23,6 @@ const teamMembers = [
   { name: "Amit Kumar",          role: "Technology & Digital Support Lead",  image: "/images/team-amit.jpeg", color: "bg-slate-600"      },
 ];
 
-// const milestones = [
-//   { year: "2010", event: "Organization founded with 5 volunteers" },
-//   { year: "2013", event: "Reached 50 villages across 3 states" },
-//   { year: "2016", event: "Launched mobile healthcare initiative" },
-//   { year: "2019", event: "Trained 5,000+ farmers in organic methods" },
-//   { year: "2022", event: "Women empowerment programs in 100+ communities" },
-//   { year: "2026", event: "Impacted 50,000+ lives across rural India" },
-// ];
-
 function AboutPage() {
   return (
     <>

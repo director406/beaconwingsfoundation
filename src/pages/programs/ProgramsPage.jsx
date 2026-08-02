@@ -8,56 +8,56 @@ const programs = [
     icon: GraduationCap,
     color: { bg: "bg-teal-50 dark:bg-teal-900/20", text: "text-teal-700 dark:text-teal-400", badge: "bg-teal-100 dark:bg-teal-900/40 text-teal-700 dark:text-teal-300" },
     desc: "Scholarships, stationery, and mentorship for underprivileged children in rural areas, keeping them enrolled and learning.",
-    stats: ["5,000+ students", "200+ schools", "18 states"],
+    stats: ["Launching 2026", "Delhi NCR"],
   },
   {
     id: 2, name: "Mobile Health Clinics", category: "Healthcare",
     icon: Stethoscope,
     color: { bg: "bg-red-50 dark:bg-red-900/20", text: "text-red-600 dark:text-red-400", badge: "bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300" },
     desc: "Mobile medical units reaching remote villages with free diagnosis, medicines, and preventive care.",
-    stats: ["40+ clinics", "80,000+ patients", "15 states"],
+    stats: ["Launching 2026", "Delhi NCR"],
   },
   {
     id: 3, name: "Organic Farming Workshops", category: "Agriculture",
     icon: Wheat,
     color: { bg: "bg-green-50 dark:bg-green-900/20", text: "text-green-700 dark:text-green-400", badge: "bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300" },
     desc: "Training smallholder farmers in organic and sustainable farming practices, reducing costs and improving yields.",
-    stats: ["5,000+ farmers", "320+ villages", "12 states"],
+    stats: ["Launching 2026", "Delhi NCR"],
   },
   {
     id: 4, name: "Legal Rights Helpdesk", category: "Legal Advisory",
     icon: Scale,
     color: { bg: "bg-purple-50 dark:bg-purple-900/20", text: "text-purple-700 dark:text-purple-400", badge: "bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300" },
     desc: "Free legal consultations, rights education, and documentation assistance to marginalized communities.",
-    stats: ["10,000+ cases", "50+ lawyers", "8 states"],
+    stats: ["Launching 2026", "Delhi NCR"],
   },
   {
     id: 5, name: "Women Skill Development", category: "Women Empowerment",
     icon: Users,
     color: { bg: "bg-orange-50 dark:bg-orange-900/20", text: "text-orange-600 dark:text-orange-400", badge: "bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-300" },
     desc: "Vocational training and entrepreneurship programs enabling rural women to achieve financial independence.",
-    stats: ["8,000+ women", "120+ groups", "10 states"],
+    stats: ["Launching 2026", "Delhi NCR"],
   },
   {
     id: 6, name: "Youth Leadership Camps", category: "Education",
     icon: Mic2,
     color: { bg: "bg-teal-50 dark:bg-teal-900/20", text: "text-teal-700 dark:text-teal-400", badge: "bg-teal-100 dark:bg-teal-900/40 text-teal-700 dark:text-teal-300" },
     desc: "Residential camps developing communication, critical thinking, and leadership in underserved youth.",
-    stats: ["2,000+ youth", "40+ camps", "Annual program"],
+    stats: ["Launching 2026", "Delhi NCR"],
   },
   {
     id: 7, name: "Nutrition Awareness Program", category: "Healthcare",
     icon: Leaf,
     color: { bg: "bg-red-50 dark:bg-red-900/20", text: "text-red-600 dark:text-red-400", badge: "bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300" },
     desc: "Community drives tackling malnutrition through dietary education, supplementation, and cooking demonstrations.",
-    stats: ["15,000+ families", "500+ sessions", "7 states"],
+    stats: ["Launching 2026", "Delhi NCR"],
   },
   {
     id: 8, name: "Community Digital Literacy", category: "Education",
     icon: Laptop,
     color: { bg: "bg-teal-50 dark:bg-teal-900/20", text: "text-teal-700 dark:text-teal-400", badge: "bg-teal-100 dark:bg-teal-900/40 text-teal-700 dark:text-teal-300" },
     desc: "Teaching smartphones, internet, online banking, and government portals to first-time technology users.",
-    stats: ["12,000+ learners", "180+ villages", "9 states"],
+    stats: ["Launching 2026", "Delhi NCR"],
   },
 ];
 
@@ -69,7 +69,7 @@ function ProgramsPage() {
           <p className="text-xs font-bold uppercase tracking-[0.18em] text-accent">Our Work</p>
           <h1 className="mt-3 text-4xl font-extrabold sm:text-5xl">Programs</h1>
           <p className="mt-3 max-w-xl text-green-100">
-            Eight flagship initiatives designed for measurable, long-term community impact.
+            {programs.length} flagship initiatives designed for measurable, long-term community impact.
           </p>
         </div>
       </section>
