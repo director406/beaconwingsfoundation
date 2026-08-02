@@ -186,15 +186,15 @@ function AboutPage() {
       <section className="bg-primary py-16 text-white">
         <div className="container-max">
           <div className="text-center">
-            <h2 className="text-3xl font-bold">Our Impact in Numbers</h2>
-            <p className="mt-3 text-green-100">Making a difference, one community at a time</p>
+            <h2 className="text-3xl font-bold">Where We Stand Today</h2>
+            <p className="mt-3 text-green-100">A new foundation, built to last</p>
           </div>
           <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { value: "50,000+", label: "Lives Impacted" },
-              { value: "320+",    label: "Villages Reached" },
-              { value: "1,200+",  label: "Volunteers Engaged" },
-              { value: "150+",    label: "Programs Executed" },
+              { value: "2026",      label: "Founded" },
+              { value: "Section 8", label: "Registered Status" },
+              { value: "3",         label: "Focus Areas" },
+              { value: "Delhi NCR", label: "Where We Operate" },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
                 <p className="text-5xl font-bold text-accent">{stat.value}</p>

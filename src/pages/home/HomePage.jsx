@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   GraduationCap, Stethoscope, Wheat, Scale, Users,
-  ChevronLeft, ChevronRight, ArrowRight, Star, MapPin,
+  ChevronLeft, ChevronRight, ArrowRight,
 } from "lucide-react";
 import { ROUTES, APP_INFO, FOCUS_AREAS } from "../../utils/constants";
 
@@ -42,48 +42,43 @@ const problemStats = [
   { number: "40M+",  label: "Indians denied basic legal rights annually", emoji: "⚖️" },
 ];
 
+// Honest, verifiable facts about where BWF stands today — not projected or
+// borrowed metrics. Update these as real program data becomes available
+// (see Firestore `stats` doc once tracked activity exists).
 const impactStats = [
-  { value: "50,000+", label: "Lives Impacted",   accent: true },
-  { value: "320+",    label: "Villages Reached",  accent: false },
-  { value: "1,200+",  label: "Active Volunteers", accent: true },
-  { value: "150+",    label: "Programs Executed", accent: false },
+  { value: "2026",      label: "Founded",           accent: true },
+  { value: "3",         label: "Focus Areas",        accent: false },
+  { value: "Section 8", label: "Registered Status",  accent: true },
+  { value: "Delhi NCR", label: "Where We Operate",   accent: false },
 ];
 
+// Forward-looking roadmap (not a fabricated past) — mirrors the org's real
+// 3-stage plan: lean launch → growth → multi-state expansion.
 const journeyEras = [
   {
-    era: "2010 – 2014",
+    era: "Phase 1 · 2026",
     image: "/images/activity-stationery.jpeg",
-    volunteers: "50", cities: "5", lives: "2,000+",
-    desc: "Founded with 5 passionate volunteers. We began with grassroots education drives and community health camps across Delhi NCR.",
+    status: "In Progress", region: "Delhi NCR", focus: "Lean Launch",
+    desc: "Registering as a Section 8 company, opening our bank account, and standing up our first Child Care, Women Empowerment, and Old Age Care programs in Delhi.",
   },
   {
-    era: "2015 – 2019",
+    era: "Phase 2 · Growth",
     image: "/images/activity-food-bowls.jpeg",
-    volunteers: "500", cities: "50", lives: "20,000+",
-    desc: "Expanded to 50 villages, launched mobile health clinics, and trained 5,000+ farmers in sustainable agriculture practices.",
+    status: "Planned", region: "NCR + neighbouring states", focus: "Scaling Programs",
+    desc: "Building our volunteer base, securing 12A/80G status, and expanding proven programs beyond our first city once Phase 1 is stable.",
   },
   {
-    era: "2020 – 2026",
+    era: "Phase 3 · Multi-State",
     image: "/images/activity-gift-distribution.jpeg",
-    volunteers: "1,200+", cities: "100+", lives: "50,000+",
-    desc: "Reached 100+ communities with women empowerment programs, digital literacy drives, and legal aid helpdesks across rural India.",
+    status: "Future", region: "Multiple states", focus: "Sustainable Chapters",
+    desc: "CSR-fund eligibility unlocks new partnerships; self-sustaining local chapters replicate our model across additional regions.",
   },
 ];
 
-const testimonials = [
-  {
-    quote: "BWF's health camp visited our village and provided free check-ups for over 200 families. It changed how we see healthcare forever.",
-    name: "Sunita Devi", location: "Rajasthan", role: "Community Member",
-  },
-  {
-    quote: "The scholarship my daughter received helped her stay in school. Today she wants to be a doctor — something we never imagined was possible.",
-    name: "Ramesh Kumar", location: "Bihar", role: "Farmer",
-  },
-  {
-    quote: "The women's skill workshop gave me the confidence to start my own small business. I am no longer dependent on anyone.",
-    name: "Lakshmi Bai", location: "Madhya Pradesh", role: "Entrepreneur",
-  },
-];
+// No fabricated beneficiary quotes — BWF is pre-operational as of 2026 and
+// has no program participants yet to quote. Replace this array with real
+// testimonials once programs are running; until then the section below
+// shows an honest "just getting started" panel instead.
 
 const focusIconMap   = [GraduationCap, Stethoscope, Wheat, Scale, Users];
 const focusColorMap  = [
@@ -203,8 +198,8 @@ function HomePage() {
               className="w-full rounded-2xl object-cover shadow-xl"
               onError={(e) => { e.target.src = ""; e.target.className = "hidden"; }} />
             <div className="absolute -bottom-5 -left-5 rounded-xl bg-primary px-6 py-4 text-white shadow-lg">
-              <p className="text-3xl font-extrabold leading-none">15+</p>
-              <p className="mt-0.5 text-xs font-medium text-green-200 uppercase tracking-wide">Years of Impact</p>
+              <p className="text-3xl font-extrabold leading-none">2026</p>
+              <p className="mt-0.5 text-xs font-medium text-green-200 uppercase tracking-wide">Founded</p>
             </div>
           </div>
         </div>
@@ -234,7 +229,7 @@ function HomePage() {
       <section className="py-16 sm:py-20">
         <div className="container-max">
           <div className="mx-auto max-w-xl text-center">
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">Impact that speaks for itself</h2>
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">Who we are, right now</h2>
           </div>
           <div className="mt-12 overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm sm:grid sm:grid-cols-2 lg:grid-cols-4">
             {impactStats.map((s, i) => (
@@ -281,8 +276,8 @@ function HomePage() {
       <section className="py-16 sm:py-20">
         <div className="container-max">
           <div className="mx-auto max-w-xl text-center">
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-accent">Our Journey</p>
-            <h2 className="mt-3 text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">How we've grown</h2>
+            <p className="text-xs font-bold uppercase tracking-[0.18em] text-accent">Our Roadmap</p>
+            <h2 className="mt-3 text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">Where we're headed</h2>
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {journeyEras.map((era) => (
@@ -292,7 +287,7 @@ function HomePage() {
                   <span className="inline-block rounded-full bg-primary px-3 py-1 text-xs font-bold text-white">{era.era}</span>
                   <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{era.desc}</p>
                   <div className="mt-5 flex justify-between border-t border-slate-100 dark:border-slate-700 pt-4 text-center">
-                    {[{ v: era.volunteers, l: "Volunteers" }, { v: era.cities, l: "Cities" }, { v: era.lives, l: "Lives" }].map(({ v, l }) => (
+                    {[{ v: era.status, l: "Status" }, { v: era.region, l: "Region" }, { v: era.focus, l: "Focus" }].map(({ v, l }) => (
                       <div key={l}>
                         <p className="text-base font-bold text-primary">{v}</p>
                         <p className="text-xs text-slate-500 dark:text-slate-400">{l}</p>
@@ -345,31 +340,25 @@ function HomePage() {
         </div>
       </section>
 
-      {/* ── TESTIMONIALS ───────────────────────────────────── */}
+      {/* ── JUST GETTING STARTED ──────────────────────────── */}
       <section className="py-16 sm:py-20">
         <div className="container-max">
-          <div className="mx-auto max-w-xl text-center">
+          <div className="mx-auto max-w-2xl rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-10 text-center shadow-sm">
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-accent">Stories</p>
-            <h2 className="mt-3 text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">From the communities we serve</h2>
-          </div>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {testimonials.map((t) => (
-              <div key={t.name} className="flex flex-col rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-7 shadow-sm">
-                <div className="flex gap-0.5 text-accent">
-                  {[1,2,3,4,5].map((n) => <Star key={n} size={14} fill="currentColor" />)}
-                </div>
-                <p className="mt-4 flex-1 italic leading-relaxed text-slate-700 dark:text-slate-200">"{t.quote}"</p>
-                <div className="mt-5 flex items-center gap-3 border-t border-slate-100 dark:border-slate-700 pt-4">
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-white">{t.name.charAt(0)}</div>
-                  <div>
-                    <p className="text-sm font-semibold text-slate-900 dark:text-white">{t.name}</p>
-                    <p className="flex items-center gap-1 text-xs text-slate-500 dark:text-slate-400">
-                      <MapPin size={10} /> {t.location} · {t.role}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
+            <h2 className="mt-3 text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">We're just getting started</h2>
+            <p className="mt-4 leading-relaxed text-slate-600 dark:text-slate-300">
+              Beacon Wings Foundation was registered in 2026 — we don't have community stories to share yet,
+              and we'd rather wait until we do than make them up. Follow along as our first programs launch,
+              or reach out if you want to be part of the story from day one.
+            </p>
+            <div className="mt-6 flex flex-wrap justify-center gap-4">
+              <Link to={ROUTES.VOLUNTEER} className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline">
+                Become a founding volunteer <ArrowRight size={14} />
+              </Link>
+              <Link to={ROUTES.CONTACT} className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:underline">
+                Get in touch <ArrowRight size={14} />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
