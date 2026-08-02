@@ -1,225 +1,136 @@
-# IIWC - International Indian Welfare Council
+# Beacon Wings Foundation — Website
 
-**Empowering Lives. Transforming Society.**
+Official website for **Beacon Wings Foundation**, a Section 8 nonprofit
+registered in India (June 2026), working across three focus areas: Child
+Care (Education & Upliftment), Women Empowerment, and Old Age People Care,
+with initial operations based in Delhi NCR.
 
-A modern, responsive NGO website built with React, Vite, and Tailwind CSS.
+Live at **[beaconwingsfoundation.org](https://beaconwingsfoundation.org)**.
 
----
-
-## 🎨 Design System
-
-- **Primary Color**: `#0B3D91` (Deep Blue)
-- **Accent Color**: `#F4A300` (Saffron)
-- **Background**: `#F9FAFB` (Light Gray)
-- **Design**: Clean, modern layout with rounded corners and soft shadows
-- **Responsive**: Mobile-first design for all device sizes
-
----
-
-## 📁 Project Structure
-
-```
-NgoWebsite/
-├── src/
-│   ├── components/          # Reusable UI components
-│   │   ├── Navbar.jsx       # Sticky navigation with mobile menu
-│   │   ├── Footer.jsx       # Site footer with links
-│   │   ├── Card.jsx         # Content card wrapper
-│   │   ├── Button.jsx       # Styled button variants
-│   │   └── SectionWrapper.jsx # Page section container
-│   │
-│   ├── pages/               # Route pages
-│   │   ├── HomePage.jsx     # Landing page with hero & stats
-│   │   ├── AboutPage.jsx    # Mission, vision, objectives
-│   │   ├── WhatWeDoPage.jsx # Five focus areas
-│   │   ├── ProgramsPage.jsx # Program showcase grid
-│   │   ├── GalleryPage.jsx  # Image gallery layout
-│   │   ├── DonatePage.jsx   # Donation form UI
-│   │   ├── VolunteerPage.jsx # Volunteer registration
-│   │   ├── ContactPage.jsx  # Contact form & info
-│   │   ├── LoginPage.jsx    # Split-screen login
-│   │   ├── SignupPage.jsx   # User registration
-│   │   └── AdminDashboardPage.jsx # Admin panel UI
-│   │
-│   ├── App.jsx              # Router configuration
-│   ├── main.jsx             # React DOM entry point
-│   └── index.css            # Global Tailwind styles
-│
-├── index.html               # HTML template
-├── vite.config.js           # Vite configuration
-├── tailwind.config.js       # Tailwind theme & colors
-├── postcss.config.js        # PostCSS config
-└── package.json             # Dependencies & scripts
-```
+> This project started from a generic NGO template (internally referred to
+> as "IIWC" in some leftover localStorage key names — harmless, cosmetic).
+> It has since been substantially rebuilt for Beacon Wings Foundation:
+> honest content (no fabricated statistics), full dark-mode support,
+> accessibility fixes, code-split routing, and a real CI/CD pipeline.
+> See `DESIGN_SYSTEM.md` for the design conventions in use.
 
 ---
 
-## 🚀 Quick Start
+## Tech stack
 
-### Prerequisites
-- Node.js (v16 or higher)
-- npm or yarn
-
-### Installation
-
-1. **Install Dependencies**
-   ```bash
-   npm install
-   ```
-
-2. **Run Development Server**
-   ```bash
-   npm run dev
-   ```
-   Opens at `http://localhost:5173`
-
-3. **Build for Production**
-   ```bash
-   npm run build
-   ```
-
-4. **Preview Production Build**
-   ```bash
-   npm run preview
-   ```
-
----
-
-## 📄 Pages
-
-### Public Pages
-
-| Route | Page | Description |
-|-------|------|-------------|
-| `/` | **Home** | Hero section, focus areas, impact stats, testimonials |
-| `/about` | **About** | Mission, vision, objectives |
-| `/what-we-do` | **What We Do** | Education, Healthcare, Agriculture, Legal, Women Empowerment |
-| `/programs` | **Programs** | Program cards grid |
-| `/gallery` | **Gallery** | Image gallery layout |
-| `/donate` | **Donate** | Donation amount selection & form |
-| `/volunteer` | **Volunteer** | Volunteer registration form |
-| `/contact` | **Contact** | Contact form with address & map placeholder |
-
-### Auth Pages
-
-| Route | Page | Description |
-|-------|------|-------------|
-| `/login` | **Login** | Professional split-screen login |
-| `/signup` | **Signup** | Full registration form with role selection |
-| `/admin` | **Admin Dashboard** | Sidebar layout with stats, user table, chart placeholder |
-
----
-
-## 🎯 Five Focus Areas
-
-1. **Education** - Scholarships, literacy, and digital learning
-2. **Healthcare** - Health camps, preventive care, awareness
-3. **Agriculture** - Farmer training, sustainable practices
-4. **Legal Advisory** - Guidance and legal aid
-5. **Women Empowerment** - Skill development, self-reliance
-
----
-
-## 🧩 Reusable Components
-
-### `<Button />`
-```jsx
-<Button variant="primary">Click Me</Button>
-<Button variant="accent">Donate</Button>
-<Button variant="outline">Learn More</Button>
-```
-
-### `<Card />`
-```jsx
-<Card className="custom-class">
-  Content goes here
-</Card>
-```
-
-### `<SectionWrapper />`
-```jsx
-<SectionWrapper title="Section Title" subtitle="Optional subtitle">
-  <div>Your content</div>
-</SectionWrapper>
-```
-
-### `<Navbar />` & `<Footer />`
-Automatically included in public layout via `App.jsx`
-
----
-
-## 🛠️ Tech Stack
-
-- **Framework**: React 18
-- **Build Tool**: Vite 5
-- **Styling**: Tailwind CSS 3
-- **Routing**: React Router DOM 6
+- **Framework**: React 18 + Vite 5
+- **Styling**: Tailwind CSS 3 (see `DESIGN_SYSTEM.md` for tokens/conventions)
+- **Routing**: React Router DOM 6, route-based code splitting via `React.lazy`
+- **Backend**: Firebase (Authentication + Firestore) — see `src/firebase.js`
 - **Icons**: Lucide React
-- **Language**: JavaScript (JSX)
+- **Hosting**: Firebase Hosting, custom domain via Squarespace DNS
+- **CI/CD**: GitHub Actions (`.github/workflows/deploy-firebase.yml`) —
+  every push to `main` builds and deploys automatically
 
----
+## Project structure
 
-## 📱 Responsive Breakpoints
-
-- **Mobile**: < 640px
-- **Tablet**: 640px - 1024px
-- **Desktop**: > 1024px
-
-All components use Tailwind's responsive utilities (`sm:`, `md:`, `lg:`, `xl:`).
-
----
-
-## 🎨 Theme Customization
-
-Edit `tailwind.config.js` to customize colors, shadows, and spacing:
-
-```js
-theme: {
-  extend: {
-    colors: {
-      primary: "#0B3D91",   // Deep Blue
-      accent: "#F4A300",    // Saffron
-      surface: "#F9FAFB",   // Light Gray
-    },
-  },
-}
+```
+src/
+├── components/
+│   ├── common/          # Button, Card, SectionWrapper, StatGrid, RouteLoader
+│   └── layout/           # Navbar, Footer, PublicLayout
+├── pages/
+│   ├── home/, about/, what-we-do/, programs/, gallery/,
+│   │   donate/, volunteer/, contact/, legal/    # Public pages
+│   ├── auth/              # Login, Signup
+│   ├── checkin/           # Volunteer activity check-in + leaderboard
+│   └── admin/              # Admin dashboard (volunteer applications, messages)
+├── hooks/                # useDocumentMeta (per-route SEO), useInView (scroll reveal)
+├── services/              # authService, firestoreService, api
+├── context/                # ThemeContext (light/dark)
+├── routes/                # AppRoutes.jsx — central route config
+├── utils/constants.js     # APP_INFO, ROUTES, NAV_LINKS, FORM_INPUT, etc.
+└── firebase.js             # Firebase app initialization
 ```
 
----
+## Local development
 
-## 📌 Notes
+Requires Node 18+.
 
-- **No Backend**: All forms are UI-only (no submission logic)
-- **Static Content**: Testimonials, stats, and programs are hardcoded
-- **Placeholder Images**: Gallery uses placeholder boxes
-- **Chart Placeholder**: Admin dashboard chart is a placeholder div
+```bash
+npm install
+npm run dev        # http://localhost:5173
+npm run build       # production build to dist/
+npm run preview     # preview the production build locally
+```
 
----
+### Environment variables
 
-## 🔮 Future Enhancements
+Firebase config is read from `VITE_FIREBASE_*` environment variables at
+**build time** (Vite bakes them into the bundle — there's no runtime env
+loading). Create `.env.local` for local development:
 
-- [ ] Backend API integration
-- [ ] Real authentication & authorization
-- [ ] Payment gateway for donations
-- [ ] Image upload for gallery
-- [ ] Dynamic content management
-- [ ] Email notifications
-- [ ] Analytics dashboard with real charts
-- [ ] Multi-language support
+```
+VITE_FIREBASE_API_KEY=...
+VITE_FIREBASE_AUTH_DOMAIN=...
+VITE_FIREBASE_PROJECT_ID=...
+VITE_FIREBASE_STORAGE_BUCKET=...
+VITE_FIREBASE_MESSAGING_SENDER_ID=...
+VITE_FIREBASE_APP_ID=...
+VITE_FIREBASE_MEASUREMENT_ID=...
+```
 
----
+Get these from Firebase Console → Project Settings → Your apps → SDK
+config for the `beaconwingsfoundation` project. **If you build without
+these set, the app builds successfully but Firebase silently fails to
+initialize** — this exact issue took the live site down once (missing
+`.env.local` in a build that got deployed). The same 7 variables are
+stored as GitHub Actions secrets for CI builds.
 
-## 📝 License
+## Deployment
 
-This project is created for the International Indian Welfare Council (IIWC).
+Push to `main` → GitHub Actions builds and deploys to Firebase Hosting
+automatically. No manual deploy step needed for normal changes.
 
----
+Manual deploy (rare — e.g. testing before merging):
+```bash
+npm run build
+firebase deploy --only hosting --project beaconwingsfoundation
+```
 
-## 👥 Contributing
+Firestore security rules live in `firestore.rules` and deploy separately:
+```bash
+firebase deploy --only firestore:rules --project beaconwingsfoundation
+```
 
-Want to contribute to IIWC's digital presence? Reach out to us at **support@iiwc.org**
+## Pages
 
----
+| Route | Description |
+|---|---|
+| `/` | Home — hero, honest current-status facts, focus areas, roadmap, "just getting started" panel |
+| `/about` | Mission, vision, values, real leadership team, current status |
+| `/what-we-do` | Focus-area detail pages *(note: currently lists 6 generic categories that don't match the org's 3 registered focus areas per the Certificate of Incorporation — pending a content decision)* |
+| `/programs` | Program cards (status: launching 2026, not yet running) |
+| `/gallery` | Photo gallery with lightbox |
+| `/donate` | UPI QR code donation *(currently a personal UPI ID — pending the org's own bank account)* |
+| `/volunteer` | Volunteer application form |
+| `/contact` | Contact form |
+| `/legal` | Registration details and policies |
+| `/checkin` | Authenticated: volunteers log activities, see city/activity leaderboards |
+| `/login`, `/signup` | Firebase Authentication |
+| `/admin` | Authenticated (Coordinator/Member role): view volunteer applications and contact messages |
 
-**Built with ❤️ for social impact**
+## Known gaps / honest state
 
+- **Admin role model is app-layer only** — there's no server-enforced
+  (Firebase custom claims) admin check yet. Firestore rules restrict
+  `volunteers`/`contact` collections to *any* signed-in user, not
+  specifically admins. Fine for now, worth hardening before handling
+  data at scale.
+- **Donation flow** is a static UPI QR code — no payment gateway, no
+  amount selection, no receipts. Blocked on the org's bank account.
+- **Content pillar mismatch** — see What We Do note above.
+- **No automated tests** — this codebase doesn't have a test suite. If
+  you add one, update this section.
+
+## Design system
+
+See `DESIGN_SYSTEM.md` for color tokens, typography scale, spacing/radius/
+shadow conventions, component patterns, and motion/accessibility rules.
+Read it before adding a new page or component — most needs are already
+covered by an existing pattern.
