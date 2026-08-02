@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { MapPin, Phone, Mail, CheckCircle } from "lucide-react";
 import { APP_INFO, ROUTES, FORM_INPUT } from "../../utils/constants";
 import { saveContactMessage } from "../../services/firestoreService";
+import { notifyAdmin } from "../../services/emailService";
 import useDocumentMeta from "../../hooks/useDocumentMeta";
 import { PageHeader } from "../../components";
 
@@ -24,6 +25,7 @@ function ContactPage() {
     setError("");
     try {
       await saveContactMessage(form);
+      notifyAdmin("contact", form); // fire-and-forget — never blocks submission
       setSubmitted(true);
       setTimeout(() => navigate(ROUTES.HOME), 3000);
     } catch (err) {

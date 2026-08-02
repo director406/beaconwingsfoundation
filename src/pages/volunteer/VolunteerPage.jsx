@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CheckCircle, Heart, Users, Clock, Award } from "lucide-react";
 import { saveVolunteerApplication } from "../../services/firestoreService";
+import { notifyAdmin } from "../../services/emailService";
 import { ROUTES, FORM_INPUT } from "../../utils/constants";
 import useDocumentMeta from "../../hooks/useDocumentMeta";
 import { PageHeader } from "../../components";
@@ -31,6 +32,7 @@ function VolunteerPage() {
     setError("");
     try {
       await saveVolunteerApplication(form);
+      notifyAdmin("volunteer", form); // fire-and-forget — never blocks submission
       setSubmitted(true);
       setTimeout(() => navigate(ROUTES.HOME), 3000);
     } catch (err) {

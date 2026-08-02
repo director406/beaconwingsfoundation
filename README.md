@@ -82,6 +82,29 @@ initialize** — this exact issue took the live site down once (missing
 `.env.local` in a build that got deployed). The same 7 variables are
 stored as GitHub Actions secrets for CI builds.
 
+### Email notifications (optional)
+
+New volunteer applications and contact messages can email
+`director@beaconwingsfoundation.org` via [EmailJS](https://emailjs.com)
+(client-side email sending — no backend/Cloud Functions needed, so no
+Firebase Blaze plan required). To enable:
+
+1. Create a free EmailJS account, connect an email sender.
+2. Create an email template with variables: `to_email`, `subject`,
+   `submission_type`, `message`.
+3. Add 3 more `VITE_EMAILJS_*` vars to `.env.local` / GitHub secrets:
+   ```
+   VITE_EMAILJS_SERVICE_ID=...
+   VITE_EMAILJS_TEMPLATE_ID=...
+   VITE_EMAILJS_PUBLIC_KEY=...
+   ```
+
+Without these set, `src/services/emailService.js` no-ops with a console
+warning — volunteer/contact form submissions still save to Firestore
+normally either way; only the email alert is skipped. Same
+fail-safe-not-fail-loud pattern as the Firebase config issue above,
+deliberately not repeated here.
+
 ## Deployment
 
 Push to `main` → GitHub Actions builds and deploys to Firebase Hosting
@@ -104,7 +127,7 @@ firebase deploy --only firestore:rules --project beaconwingsfoundation
 |---|---|
 | `/` | Home — hero, honest current-status facts, focus areas, roadmap, "just getting started" panel |
 | `/about` | Mission, vision, values, real leadership team, current status |
-| `/what-we-do` | Focus-area detail pages *(note: currently lists 6 generic categories that don't match the org's 3 registered focus areas per the Certificate of Incorporation — pending a content decision)* |
+| `/what-we-do` | Focus-area detail pages — Child Care, Women Empowerment, Old Age Care (matches the org's registered focus areas) |
 | `/programs` | Program cards (status: launching 2026, not yet running) |
 | `/gallery` | Photo gallery with lightbox |
 | `/donate` | UPI QR code donation *(currently a personal UPI ID — pending the org's own bank account)* |
@@ -118,13 +141,15 @@ firebase deploy --only firestore:rules --project beaconwingsfoundation
 ## Known gaps / honest state
 
 - **Admin role model is app-layer only** — there's no server-enforced
-  (Firebase custom claims) admin check yet. Firestore rules restrict
-  `volunteers`/`contact` collections to *any* signed-in user, not
-  specifically admins. Fine for now, worth hardening before handling
-  data at scale.
+  (Firebase custom claims) admin check. This requires Firebase Cloud
+  Functions, which requires upgrading to the Blaze (pay-as-you-go) plan.
+  **Deliberately deferred** — a decision, not an oversight — revisit once
+  the org scales up and it's worth the cost.
 - **Donation flow** is a static UPI QR code — no payment gateway, no
-  amount selection, no receipts. Blocked on the org's bank account.
-- **Content pillar mismatch** — see What We Do note above.
+  amount selection, no receipts. **Deliberately deferred**, blocked on
+  the org's own bank account being ready.
+- **Learning resources / volunteer academy** — not built. **Deliberately
+  deferred**, no content exists yet to put there.
 - **No automated tests** — this codebase doesn't have a test suite. If
   you add one, update this section.
 
