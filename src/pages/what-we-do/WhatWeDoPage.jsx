@@ -1,56 +1,39 @@
 import { Link } from "react-router-dom";
-import { GraduationCap, Stethoscope, Wheat, Scale, Users, ArrowRight } from "lucide-react";
+import { GraduationCap, Users, Heart, ArrowRight } from "lucide-react";
 import { ROUTES } from "../../utils/constants";
 import useDocumentMeta from "../../hooks/useDocumentMeta";
 import { PageHeader } from "../../components";
 
+// The organization's actual 3 registered focus areas, per the Certificate
+// of Incorporation. Previously this listed 6 generic categories (Education,
+// Healthcare, Agriculture, Legal Advisory, Women Empowerment, Self Defence)
+// inherited from the template this site was built from.
 const pillars = [
   {
-    icon: GraduationCap, title: "Education", tagline: "Lighting the path to a better future",
+    icon: GraduationCap, title: "Child Care", tagline: "Education & Upliftment",
     color: { bg: "bg-teal-600", light: "bg-teal-50 dark:bg-teal-900/20", text: "text-teal-700 dark:text-teal-400", dot: "bg-teal-600" },
     image: "/images/activity-children-session.jpeg",
-    desc: "Access to quality education is one of the most powerful catalysts for breaking the cycle of poverty. BWF provides scholarships, free tutoring, digital literacy training, and school supplies to children and youth in underserved communities across rural India.",
-    highlights: ["Scholarships for underprivileged students (launching 2026)", "Digital learning labs planned for our first communities", "Youth leadership and mentorship camps", "Adult literacy programs for parents"],
-  },
-  {
-    icon: Stethoscope, title: "Healthcare", tagline: "Because health is a fundamental right",
-    color: { bg: "bg-red-600", light: "bg-red-50 dark:bg-red-900/20", text: "text-red-600 dark:text-red-400", dot: "bg-red-600" },
-    image: "/images/activity-food-bowls.jpeg",
-    desc: "Millions of Indians in rural areas lack access to basic medical care. Our mobile health clinics travel to remote communities offering free consultations, medicines, maternal care, and preventive health screenings.",
-    highlights: ["Mobile health clinics planned for Delhi NCR", "Free consultations and preventive screenings", "Nutrition and maternal health programs", "Mental health awareness sessions"],
-  },
-  {
-    icon: Wheat, title: "Agriculture", tagline: "Empowering the farmers who feed our nation",
-    color: { bg: "bg-green-700", light: "bg-green-50 dark:bg-green-900/20", text: "text-green-700 dark:text-green-400", dot: "bg-green-700" },
-    image: "https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?w=700&h=450&fit=crop",
-    desc: "India's agricultural sector supports over 600 million people, yet most small farmers struggle with low yields and debt. We train farmers in organic and sustainable methods, connect them to markets, and advocate for fair credit and insurance access.",
-    highlights: ["Organic-farming training for smallholder farmers", "Collective farming cooperatives, starting locally", "Soil health testing and crop planning support", "Market linkage and price discovery programs"],
-  },
-  {
-    icon: Scale, title: "Legal Advisory", tagline: "Justice for those who need it most",
-    color: { bg: "bg-purple-700", light: "bg-purple-50 dark:bg-purple-900/20", text: "text-purple-700 dark:text-purple-400", dot: "bg-purple-700" },
-    image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=700&h=450&fit=crop",
-    desc: "Lack of legal awareness leaves millions vulnerable to exploitation. Our legal helpdesks provide free consultations, documentation assistance, and rights education to daily-wage workers, women, and marginalized communities.",
-    highlights: ["Free legal consultations for daily-wage workers", "Building a network of pro-bono lawyers", "Legal rights literacy camps", "Land rights and labour law advocacy"],
+    desc: "Every child deserves the chance to learn, grow, and be cared for — regardless of their family's circumstances. BWF works to give underprivileged children access to education and the broader support that helps them thrive: learning support, nutrition, and mentorship.",
+    highlights: ["Scholarships for underprivileged students (launching 2026)", "Community learning centers planned for our first neighborhoods", "Nutrition support paired with learning programs", "Mentorship and holistic upliftment activities for children"],
   },
   {
     icon: Users, title: "Women Empowerment", tagline: "When women rise, communities thrive",
-    color: { bg: "bg-orange-600", light: "bg-orange-50 dark:bg-orange-900/20", text: "text-orange-600 dark:text-orange-400", dot: "bg-orange-600" },
+    color: { bg: "bg-purple-700", light: "bg-purple-50 dark:bg-purple-900/20", text: "text-purple-700 dark:text-purple-400", dot: "bg-purple-700" },
     image: "/images/activity-gift-distribution.jpeg",
-    desc: "Women in rural India face deep structural barriers to education, work, and autonomy. BWF runs vocational training, self-help groups, entrepreneurship support, and safety awareness programs enabling women to build financial independence.",
-    highlights: ["Vocational training for rural women", "Self-help groups, starting in our first communities", "Micro-finance linkage support", "Safety, health, and legal rights workshops"],
+    desc: "Women in underserved communities often face structural barriers to education, work, and independence. BWF runs vocational training, self-help groups, and skill-building programs that help women build financial independence and confidence.",
+    highlights: ["Vocational training for rural and urban women", "Self-help groups, starting in our first communities", "Financial literacy and micro-enterprise support", "Safety, health, and legal-rights awareness workshops"],
   },
-    {
-    icon: Users, title: "Self Defence", tagline: "When we rise, communities thrive",
-    color: { bg: "bg-orange-600", light: "bg-orange-50 dark:bg-orange-900/20", text: "text-orange-600 dark:text-orange-400", dot: "bg-orange-600" },
+  {
+    icon: Heart, title: "Old Age People Care", tagline: "No one should grow old alone",
+    color: { bg: "bg-red-600", light: "bg-red-50 dark:bg-red-900/20", text: "text-red-600 dark:text-red-400", dot: "bg-red-600" },
     image: "/images/community-volunteers-group.jpeg",
-    desc: "People in rural India face deep structural barriers to education, work, and autonomy. BWF runs vocational training, self-help groups, entrepreneurship support, and safety awareness programs enabling women and men to build self defence skills.",
-    highlights: ["Self-defence training for women and men", "Community safety workshops, starting locally", "Practical, instructor-led technique sessions", "Safety, health, and legal rights workshops"],
+    desc: "Millions of elderly Indians live alone or without adequate support as family structures change. BWF is building programs centered on companionship, health support, and dignity for the elderly members of our communities.",
+    highlights: ["Companionship visits and community engagement for seniors", "Health and wellness camps tailored for elderly needs", "Support connecting seniors with essential services", "Dignity-focused care programs, starting locally"],
   },
 ];
 
 function WhatWeDoPage() {
-  useDocumentMeta("What We Do", "The community-focused programs we're building across Education, Healthcare, Agriculture, Legal Advisory, and Women Empowerment.");
+  useDocumentMeta("What We Do", "The community-focused programs we're building across Child Care, Women Empowerment, and Old Age People Care.");
   return (
     <>
       <PageHeader

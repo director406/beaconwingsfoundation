@@ -40,31 +40,28 @@ export const NAV_LINKS = [
   { name: "CheckIn", path: ROUTES.CHECKIN },
 ];
 
+// The organization's actual 3 registered focus areas, per the Certificate
+// of Incorporation (Child Care, Women Empowerment, Old Age People Care).
+// Previously this listed 5 generic categories (Education, Healthcare,
+// Agriculture, Legal Advisory, Women Empowerment) inherited from the
+// template this site was built from — none of which matched what BWF is
+// actually registered to do except Women Empowerment.
 export const FOCUS_AREAS = [
   {
-    id: "education",
-    title: "Education",
-    description: "Scholarships, literacy, and digital learning initiatives.",
-  },
-  {
-    id: "healthcare",
-    title: "Healthcare",
-    description: "Health camps, preventive care, and awareness drives.",
-  },
-  {
-    id: "agriculture",
-    title: "Agriculture",
-    description: "Farmer training, sustainable methods, and livelihood support.",
-  },
-  {
-    id: "legal-advisory",
-    title: "Legal Advisory",
-    description: "Guidance and legal aid for vulnerable communities.",
+    id: "child-care",
+    title: "Child Care",
+    subtitle: "Education & Upliftment",
+    description: "Scholarships, learning support, and holistic upliftment programs for underprivileged children.",
   },
   {
     id: "women-empowerment",
     title: "Women Empowerment",
-    description: "Skill development and self-reliance programs for women.",
+    description: "Vocational training, self-help groups, and skill-building that help women achieve independence.",
+  },
+  {
+    id: "old-age-care",
+    title: "Old Age People Care",
+    description: "Companionship, health support, and dignified care programs for the elderly in our communities.",
   },
 ];
 
@@ -87,13 +84,13 @@ export const FORM_INPUT =
   "w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-4 py-2.5 text-sm text-slate-800 dark:text-slate-100 outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20 placeholder:text-slate-400 dark:placeholder:text-slate-500";
 
 export const PROGRAMS = [
-  "Rural Education Support",
-  "Mobile Health Clinics",
-  "Organic Farming Workshops",
-  "Legal Rights Helpdesk",
-  "Women Skill Development",
-  "Youth Leadership Camps",
-  "Nutrition Awareness Program",
-  "Community Digital Literacy",
+  "Scholarship & Learning Support",
+  "Community Learning Centers",
+  "Nutrition & Wellbeing for Children",
+  "Vocational Skill Development",
+  "Self-Help Group Formation",
+  "Financial Literacy Workshops",
+  "Elderly Companionship Program",
+  "Senior Health & Wellness Camps",
 ];
  

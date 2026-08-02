@@ -5,16 +5,14 @@ import { PageHeader } from "../../components";
 
 const galleryImages = [
   { url: "/images/activity-children-peace.jpeg",     title: "Community Play Session",      category: "Community"   },
-  { url: "/images/activity-children-session.jpeg",   title: "Learning & Fun Session",      category: "Education"   },
-  { url: "/images/activity-stationery.jpeg",         title: "Stationery Distribution",     category: "Education"   },
+  { url: "/images/activity-children-session.jpeg",   title: "Learning & Fun Session",      category: "Child Care"  },
+  { url: "/images/activity-stationery.jpeg",         title: "Stationery Distribution",     category: "Child Care"  },
   { url: "/images/activity-gift-distribution.jpeg",  title: "Gift & Snack Distribution",   category: "Events"      },
-  { url: "/images/activity-food-bowls.jpeg",         title: "Nutrition Drive",             category: "Healthcare"  },
-  { url: "/images/activity-food-field.jpeg",         title: "Food Distribution Drive",     category: "Healthcare"  },
+  { url: "/images/activity-food-bowls.jpeg",         title: "Nutrition Drive",             category: "Child Care"  },
+  { url: "/images/activity-food-field.jpeg",         title: "Food Distribution Drive",     category: "Child Care"  },
   { url: "/images/community-volunteers-group.jpeg",  title: "Volunteers with Community",   category: "Community"   },
   { url: "/images/volunteer-evening-kids.jpeg",      title: "Evening Activity Session",    category: "Events"      },
   { url: "/images/volunteer-group-selfie.jpeg",      title: "Team & Community Connect",    category: "Community"   },
-  { url: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&h=600&fit=crop", title: "Agricultural Training", category: "Agriculture" },
-  { url: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&h=600&fit=crop", title: "Organic Farming",     category: "Agriculture" },
   { url: "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=800&h=600&fit=crop", title: "Women Empowerment",  category: "Women"       },
 ];
 

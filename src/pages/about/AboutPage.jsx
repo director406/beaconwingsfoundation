@@ -15,9 +15,9 @@ const teamMembers = [
   { name: "Sampurn Aanand",     role: "Deputy Director",                    image: "/images/team-sampurn.jpeg", color: "bg-teal-600"   },
   { name: "Gaurav Vyas",        role: "Operations Head",                    image: "/images/team-gaurav.jpeg", color: "bg-green-700"   },
   // { name: "Ansu Kannoujia",     role: "Women Empowerment Lead",             image: "/images/team-ansu.png", color: "bg-orange-500"    },
-  { name: "Arif",               role: "Self Defence Lead",                  image: "/images/team-arif.png", color: "bg-blue-600"      },
-  { name: "Santosh Singh",      role: "Rural Development & Agriculture",    image: "/images/team-santosh.png", color: "bg-amber-600"  },
-  { name: "Akansha Srivastav", role: "Healthcare",                     image: "/images/team-a.png", color: "bg-rose-600"   },
+  { name: "Arif",               role: "Women Empowerment — Community Safety", image: "/images/team-arif.png", color: "bg-blue-600"      },
+  { name: "Santosh Singh",      role: "Field Operations Lead",              image: "/images/team-santosh.png", color: "bg-amber-600"  },
+  { name: "Akansha Srivastav", role: "Old Age People Care Lead",         image: "/images/team-a.png", color: "bg-rose-600"   },
   { name: "Mayank Pandey",      role: "Communications & Partnerships Head", image: "/images/team-mayan.png", color: "bg-purple-600"  },
   { name: "Nitin Singh",        role: "Head of Programs",                   image: "/images/team-nitin.jpeg", color: "bg-cyan-600"    },
   { name: "Krishna Mohan",      role: "Child Development & Education Lead", image: "/images/team-.png", color: "bg-indigo-600" },
@@ -95,12 +95,12 @@ function AboutPage() {
           </div>
           <div className="mt-12 grid gap-6 sm:grid-cols-2">
             {[
-              "Promote access to quality education and digital literacy for children",
-              "Strengthen healthcare delivery through mobile clinics and awareness programs",
-              "Support sustainable agriculture and livelihood enhancement initiatives",
-              "Provide legal aid and advocacy for vulnerable and marginalized groups",
-              "Advance women leadership, skill development, and economic independence",
-              "Foster youth engagement through leadership camps and mentorship programs",
+              "Provide access to quality education and holistic upliftment for underprivileged children",
+              "Support children's nutrition, wellbeing, and safe learning environments",
+              "Advance women's skill development, self-reliance, and economic independence",
+              "Build community-led self-help groups and financial literacy among women",
+              "Ensure dignity, companionship, and health support for elderly community members",
+              "Reduce isolation among seniors through regular engagement and care programs",
             ].map((objective, idx) => (
               <div key={idx} className="flex gap-4 rounded-xl2 border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 p-5">
                 <div className="shrink-0">

@@ -1,64 +1,67 @@
 import { Link } from "react-router-dom";
-import { GraduationCap, Stethoscope, Wheat, Scale, Users, Leaf, Mic2, Laptop, ArrowRight } from "lucide-react";
+import { GraduationCap, BookOpen, Apple, Briefcase, HeartHandshake, PiggyBank, HeartPulse, Users, ArrowRight } from "lucide-react";
 import { ROUTES } from "../../utils/constants";
 import useDocumentMeta from "../../hooks/useDocumentMeta";
 import { PageHeader } from "../../components";
 
 const programs = [
+  // Child Care (Education & Upliftment)
   {
-    id: 1, name: "Rural Education Support",  category: "Education",
+    id: 1, name: "Scholarship & Learning Support", category: "Child Care",
     icon: GraduationCap,
     color: { bg: "bg-teal-50 dark:bg-teal-900/20", text: "text-teal-700 dark:text-teal-400", badge: "bg-teal-100 dark:bg-teal-900/40 text-teal-700 dark:text-teal-300" },
-    desc: "Scholarships, stationery, and mentorship for underprivileged children in rural areas, keeping them enrolled and learning.",
+    desc: "Scholarships, stationery, and mentorship for underprivileged children, helping them stay enrolled and learning.",
     stats: ["Launching 2026", "Delhi NCR"],
   },
   {
-    id: 2, name: "Mobile Health Clinics", category: "Healthcare",
-    icon: Stethoscope,
-    color: { bg: "bg-red-50 dark:bg-red-900/20", text: "text-red-600 dark:text-red-400", badge: "bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300" },
-    desc: "Mobile medical units reaching remote villages with free diagnosis, medicines, and preventive care.",
+    id: 2, name: "Community Learning Centers", category: "Child Care",
+    icon: BookOpen,
+    color: { bg: "bg-teal-50 dark:bg-teal-900/20", text: "text-teal-700 dark:text-teal-400", badge: "bg-teal-100 dark:bg-teal-900/40 text-teal-700 dark:text-teal-300" },
+    desc: "Local learning spaces offering tutoring, digital literacy, and a safe place for children to study after school.",
     stats: ["Launching 2026", "Delhi NCR"],
   },
   {
-    id: 3, name: "Organic Farming Workshops", category: "Agriculture",
-    icon: Wheat,
-    color: { bg: "bg-green-50 dark:bg-green-900/20", text: "text-green-700 dark:text-green-400", badge: "bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300" },
-    desc: "Training smallholder farmers in organic and sustainable farming practices, reducing costs and improving yields.",
+    id: 3, name: "Nutrition & Wellbeing for Children", category: "Child Care",
+    icon: Apple,
+    color: { bg: "bg-teal-50 dark:bg-teal-900/20", text: "text-teal-700 dark:text-teal-400", badge: "bg-teal-100 dark:bg-teal-900/40 text-teal-700 dark:text-teal-300" },
+    desc: "Nutrition support paired with learning programs, addressing hunger as a barrier to a child's education.",
     stats: ["Launching 2026", "Delhi NCR"],
   },
+  // Women Empowerment
   {
-    id: 4, name: "Legal Rights Helpdesk", category: "Legal Advisory",
-    icon: Scale,
+    id: 4, name: "Vocational Skill Development", category: "Women Empowerment",
+    icon: Briefcase,
     color: { bg: "bg-purple-50 dark:bg-purple-900/20", text: "text-purple-700 dark:text-purple-400", badge: "bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300" },
-    desc: "Free legal consultations, rights education, and documentation assistance to marginalized communities.",
+    desc: "Vocational training and entrepreneurship programs enabling women to build financial independence.",
     stats: ["Launching 2026", "Delhi NCR"],
   },
   {
-    id: 5, name: "Women Skill Development", category: "Women Empowerment",
+    id: 5, name: "Self-Help Group Formation", category: "Women Empowerment",
+    icon: HeartHandshake,
+    color: { bg: "bg-purple-50 dark:bg-purple-900/20", text: "text-purple-700 dark:text-purple-400", badge: "bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300" },
+    desc: "Community-led self-help groups that give women a collective voice, savings discipline, and mutual support.",
+    stats: ["Launching 2026", "Delhi NCR"],
+  },
+  {
+    id: 6, name: "Financial Literacy Workshops", category: "Women Empowerment",
+    icon: PiggyBank,
+    color: { bg: "bg-purple-50 dark:bg-purple-900/20", text: "text-purple-700 dark:text-purple-400", badge: "bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300" },
+    desc: "Practical training in savings, budgeting, and micro-enterprise basics to support economic independence.",
+    stats: ["Launching 2026", "Delhi NCR"],
+  },
+  // Old Age People Care
+  {
+    id: 7, name: "Elderly Companionship Program", category: "Old Age Care",
     icon: Users,
-    color: { bg: "bg-orange-50 dark:bg-orange-900/20", text: "text-orange-600 dark:text-orange-400", badge: "bg-orange-100 dark:bg-orange-900/40 text-orange-700 dark:text-orange-300" },
-    desc: "Vocational training and entrepreneurship programs enabling rural women to achieve financial independence.",
-    stats: ["Launching 2026", "Delhi NCR"],
-  },
-  {
-    id: 6, name: "Youth Leadership Camps", category: "Education",
-    icon: Mic2,
-    color: { bg: "bg-teal-50 dark:bg-teal-900/20", text: "text-teal-700 dark:text-teal-400", badge: "bg-teal-100 dark:bg-teal-900/40 text-teal-700 dark:text-teal-300" },
-    desc: "Residential camps developing communication, critical thinking, and leadership in underserved youth.",
-    stats: ["Launching 2026", "Delhi NCR"],
-  },
-  {
-    id: 7, name: "Nutrition Awareness Program", category: "Healthcare",
-    icon: Leaf,
     color: { bg: "bg-red-50 dark:bg-red-900/20", text: "text-red-600 dark:text-red-400", badge: "bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300" },
-    desc: "Community drives tackling malnutrition through dietary education, supplementation, and cooking demonstrations.",
+    desc: "Regular visits and community engagement for elderly people living alone, addressing isolation and loneliness.",
     stats: ["Launching 2026", "Delhi NCR"],
   },
   {
-    id: 8, name: "Community Digital Literacy", category: "Education",
-    icon: Laptop,
-    color: { bg: "bg-teal-50 dark:bg-teal-900/20", text: "text-teal-700 dark:text-teal-400", badge: "bg-teal-100 dark:bg-teal-900/40 text-teal-700 dark:text-teal-300" },
-    desc: "Teaching smartphones, internet, online banking, and government portals to first-time technology users.",
+    id: 8, name: "Senior Health & Wellness Camps", category: "Old Age Care",
+    icon: HeartPulse,
+    color: { bg: "bg-red-50 dark:bg-red-900/20", text: "text-red-600 dark:text-red-400", badge: "bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300" },
+    desc: "Health check-ups and wellness support tailored for elderly needs, connecting seniors with essential care.",
     stats: ["Launching 2026", "Delhi NCR"],
   },
 ];

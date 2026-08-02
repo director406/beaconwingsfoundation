@@ -109,7 +109,7 @@ function VolunteerPage() {
                     <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-400">Area of Interest *</label>
                     <select name="area" required value={form.area} onChange={handleChange} className={INPUT}>
                       <option value="">Select an area…</option>
-                      {["Education", "Healthcare", "Agriculture", "Legal Advisory", "Women Empowerment", "General / Any"].map(o => <option key={o}>{o}</option>)}
+                      {["Child Care", "Women Empowerment", "Old Age People Care", "General / Any"].map(o => <option key={o}>{o}</option>)}
                     </select>
                   </div>
                   <div className="sm:col-span-2">

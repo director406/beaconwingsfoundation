@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
-  GraduationCap, Stethoscope, Wheat, Scale, Users,
+  GraduationCap, Users, Heart,
   ChevronLeft, ChevronRight, ArrowRight,
 } from "lucide-react";
 import { ROUTES, APP_INFO, FOCUS_AREAS } from "../../utils/constants";
@@ -24,8 +24,8 @@ const carouselSlides = [
   {
     url: "/images/slider3.jpeg",
     fallback: "from-teal-900 to-slate-900",
-    headline: "Healthcare is a right, not a privilege.",
-    sub: "We bring it to every village, every doorstep.",
+    headline: "No one should grow old alone.",
+    sub: "We bring companionship and care to our elders' doorsteps.",
   },
   {
     url: "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=1600&h=900&fit=crop",
@@ -38,8 +38,8 @@ const carouselSlides = [
 const problemStats = [
   { number: "200M+", label: "Indians living below the poverty line", emoji: "📊" },
   { number: "26M+",  label: "Children out of school across India", emoji: "📚" },
-  { number: "65%",   label: "Rural Indians lack quality healthcare access", emoji: "🏥" },
-  { number: "70%",   label: "Farmers still rely on traditional methods", emoji: "🌾" },
+  { number: "30M+",  label: "Elderly Indians living alone, often without support", emoji: "🧓" },
+  { number: "68%",   label: "Indian women remain outside the paid workforce", emoji: "👩" },
   { number: "14%",   label: "Rural women are financially independent", emoji: "👩" },
   { number: "40M+",  label: "Indians denied basic legal rights annually", emoji: "⚖️" },
 ];
@@ -82,13 +82,11 @@ const journeyEras = [
 // testimonials once programs are running; until then the section below
 // shows an honest "just getting started" panel instead.
 
-const focusIconMap   = [GraduationCap, Stethoscope, Wheat, Scale, Users];
+const focusIconMap   = [GraduationCap, Users, Heart];
 const focusColorMap  = [
   { bg: "bg-teal-50   dark:bg-teal-900/20",   text: "text-teal-700   dark:text-teal-400"   },
-  { bg: "bg-red-50    dark:bg-red-900/20",    text: "text-red-600    dark:text-red-400"    },
-  { bg: "bg-green-50  dark:bg-green-900/20",  text: "text-green-700  dark:text-green-400"  },
   { bg: "bg-purple-50 dark:bg-purple-900/20", text: "text-purple-700 dark:text-purple-400" },
-  { bg: "bg-orange-50 dark:bg-orange-900/20", text: "text-orange-600 dark:text-orange-400" },
+  { bg: "bg-red-50    dark:bg-red-900/20",    text: "text-red-600    dark:text-red-400"    },
 ];
 
 const cultureValues = [
@@ -180,8 +178,8 @@ function HomePage() {
             </h2>
             <p className="mt-5 leading-relaxed text-slate-600 dark:text-slate-300">
               {APP_INFO.name} is a non-profit founded on the belief that grassroots action and community-led
-              change can solve India's most pressing social challenges. We work across education, healthcare,
-              agriculture, legal aid, and women empowerment.
+              change can solve India's most pressing social challenges. We work across child care and education,
+              women empowerment, and care for the elderly.
             </p>
             <p className="mt-4 leading-relaxed text-slate-600 dark:text-slate-300">
               We operate on <strong className="text-slate-800 dark:text-slate-100">zero administrative overhead</strong> — every
@@ -243,9 +241,9 @@ function HomePage() {
         <div className="container-max">
           <div className="mx-auto max-w-xl text-center">
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-accent">What We Do</p>
-            <h2 className="mt-3 text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">Five pillars of change</h2>
+            <h2 className="mt-3 text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">{FOCUS_AREAS.length} pillars of change</h2>
           </div>
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="mt-12 grid gap-5 sm:grid-cols-3">
             {FOCUS_AREAS.map(({ title, description }, idx) => {
               const Icon = focusIconMap[idx];
               const { bg, text } = focusColorMap[idx];
