@@ -53,3 +53,15 @@ html.dark {
 .no-transition * {
   transition: none !important;
 }
+
+/* ── Accessibility: visible keyboard focus ───────────────
+   Mouse/touch users don't see this (focus-visible only fires
+   for keyboard/programmatic focus); doesn't fight custom
+   focus-visible utilities already set on individual elements. */
+a, button, input, select, textarea, [tabindex] {
+  outline-offset: 2px;
+}
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid rgb(var(--color-primary));
+}

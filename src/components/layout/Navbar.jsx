@@ -45,7 +45,7 @@ function Navbar() {
           </div>
         </Link>
 
-        <nav className="hidden items-center gap-5 lg:flex">
+        <nav className="hidden items-center gap-5 lg:flex" aria-label="Primary">
           {NAV_LINKS.map((link) => (
             <NavLink
               key={link.path}
@@ -84,13 +84,15 @@ function Navbar() {
           className="rounded-lg p-2 text-primary lg:hidden"
           onClick={() => setOpen((prev) => !prev)}
           aria-label="Toggle menu"
+          aria-expanded={open}
+          aria-controls="mobile-nav-panel"
         >
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
       {open && (
-        <div className="border-t border-slate-200 bg-white lg:hidden">
+        <div id="mobile-nav-panel" className="border-t border-slate-200 bg-white lg:hidden">
           <div className="container-max flex flex-col gap-3 py-4">
             {NAV_LINKS.map((link) => (
               <NavLink
