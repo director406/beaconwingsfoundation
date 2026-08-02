@@ -34,6 +34,21 @@ function Navbar() {
     setOpen(false);
   };
 
+  // Mobile menu polish: lock background scroll while open, close on Escape
+  useEffect(() => {
+    if (!open) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [open]);
+
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200/70 dark:border-slate-700 bg-white/95 dark:bg-slate-900/95 backdrop-blur">
       <div className="container-max flex h-20 items-center justify-between">
@@ -91,8 +106,13 @@ function Navbar() {
         </button>
       </div>
 
-      {open && (
-        <div id="mobile-nav-panel" className="border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 lg:hidden">
+      <div
+        id="mobile-nav-panel"
+        className={`grid overflow-hidden border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 transition-[grid-template-rows] duration-300 ease-in-out lg:hidden ${
+          open ? "grid-rows-[1fr]" : "grid-rows-[0fr] border-t-0"
+        }`}
+      >
+        <div className="min-h-0">
           <div className="container-max flex flex-col gap-3 py-4">
             {NAV_LINKS.map((link) => (
               <NavLink
@@ -100,7 +120,7 @@ function Navbar() {
                 to={link.path}
                 onClick={() => setOpen(false)}
                 className={({ isActive }) =>
-                  `rounded-lg px-3 py-2 text-sm font-medium ${isActive ? "bg-primary/10 text-primary" : "text-slate-600 dark:text-slate-300"}`
+                  `rounded-lg px-3 py-3 text-sm font-medium ${isActive ? "bg-primary/10 text-primary" : "text-slate-600 dark:text-slate-300"}`
                 }
               >
                 {link.name}
@@ -130,7 +150,7 @@ function Navbar() {
             )}
           </div>
         </div>
-      )}
+      </div>
     </header>
   );
 }
