@@ -42,13 +42,15 @@ function Footer() {
   };
 
   return (
-    <footer className="bg-slate-900 dark:bg-slate-950 text-slate-400">
-      {/* Newsletter strip */}
+    <footer className="border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300">
+      {/* Newsletter strip — kept as the brand primary color deliberately, as
+          a single accent band rather than a dark section; everything below
+          it is light. */}
       <div className="bg-primary">
         <div className="container-max flex flex-col items-start justify-between gap-5 py-10 sm:flex-row sm:items-center">
           <div>
             <h3 className="text-lg font-bold text-white">Stay connected with us</h3>
-            <p className="mt-1 text-sm text-green-200">
+            <p className="mt-1 text-sm text-green-100">
               Get updates on programs, impact stories, and volunteer opportunities.
             </p>
           </div>
@@ -82,10 +84,10 @@ function Footer() {
         {/* Brand */}
         <div>
           <div className="flex items-center gap-3">
-            <div className="rounded-full bg-white p-1 shadow">
+            <div className="rounded-full bg-white p-1 shadow ring-1 ring-slate-200 dark:ring-slate-700">
               <img src="/images/logo.jpeg" alt={APP_INFO.name} className="h-12 w-12 rounded-full object-cover" />
             </div>
-            <span className="text-sm font-bold text-white leading-tight">{APP_INFO.name}</span>
+            <span className="text-sm font-bold text-slate-900 dark:text-white leading-tight">{APP_INFO.name}</span>
           </div>
           <p className="mt-3 text-sm leading-relaxed">{APP_INFO.tagline}</p>
           <p className="mt-3 text-sm leading-relaxed">
@@ -100,7 +102,7 @@ function Footer() {
                 aria-label={label}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-lg bg-slate-800 dark:bg-slate-900 p-2 text-slate-400 transition hover:bg-primary hover:text-white"
+                className="rounded-lg bg-slate-100 dark:bg-slate-800 p-2 text-slate-500 dark:text-slate-400 transition hover:bg-primary hover:text-white"
               >
                 <Icon size={16} />
               </a>
@@ -110,11 +112,11 @@ function Footer() {
 
         {/* Explore */}
         <div>
-          <h4 className="text-sm font-semibold uppercase tracking-wider text-white">Explore</h4>
+          <h4 className="text-sm font-semibold uppercase tracking-wider text-slate-900 dark:text-white">Explore</h4>
           <ul className="mt-4 space-y-2.5">
             {exploreLinks.map(([label, path]) => (
               <li key={path}>
-                <Link to={path} className="text-sm transition hover:text-white">
+                <Link to={path} className="text-sm transition hover:text-primary">
                   {label}
                 </Link>
               </li>
@@ -124,11 +126,11 @@ function Footer() {
 
         {/* Get Involved */}
         <div>
-          <h4 className="text-sm font-semibold uppercase tracking-wider text-white">Get Involved</h4>
+          <h4 className="text-sm font-semibold uppercase tracking-wider text-slate-900 dark:text-white">Get Involved</h4>
           <ul className="mt-4 space-y-2.5">
             {involveLinks.map(([label, path]) => (
               <li key={path}>
-                <Link to={path} className="text-sm transition hover:text-white">
+                <Link to={path} className="text-sm transition hover:text-primary">
                   {label}
                 </Link>
               </li>
@@ -138,16 +140,16 @@ function Footer() {
 
         {/* Contact */}
         <div>
-          <h4 className="text-sm font-semibold uppercase tracking-wider text-white">Contact</h4>
+          <h4 className="text-sm font-semibold uppercase tracking-wider text-slate-900 dark:text-white">Contact</h4>
           <div className="mt-4 space-y-2.5 text-sm">
             <p className="leading-relaxed">{APP_INFO.address}</p>
             <p>
-              <a href={`tel:${APP_INFO.phone}`} className="transition hover:text-white">
+              <a href={`tel:${APP_INFO.phone}`} className="transition hover:text-primary">
                 {APP_INFO.phone}
               </a>
             </p>
             <p>
-              <a href={`mailto:${APP_INFO.email}`} className="transition hover:text-white">
+              <a href={`mailto:${APP_INFO.email}`} className="transition hover:text-primary">
                 {APP_INFO.email}
               </a>
             </p>
@@ -156,12 +158,12 @@ function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-slate-800 dark:border-slate-900">
+      <div className="border-t border-slate-200 dark:border-slate-700">
         <div className="container-max flex flex-col items-center justify-between gap-2 py-5 text-xs sm:flex-row">
           <p>© {new Date().getFullYear()} {APP_INFO.name}. All rights reserved.</p>
           <div className="flex items-center gap-4">
-            <Link to={ROUTES.LEGAL} className="transition hover:text-white">Legal &amp; Documents</Link>
-            <span className="text-slate-600">Made with ♥ for a better India</span>
+            <Link to={ROUTES.LEGAL} className="transition hover:text-primary">Legal &amp; Documents</Link>
+            <span className="text-slate-400 dark:text-slate-500">Made with ♥ for a better India</span>
           </div>
         </div>
       </div>

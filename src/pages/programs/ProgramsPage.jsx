@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { GraduationCap, Stethoscope, Wheat, Scale, Users, Leaf, Mic2, Laptop, ArrowRight } from "lucide-react";
 import { ROUTES } from "../../utils/constants";
 import useDocumentMeta from "../../hooks/useDocumentMeta";
+import { PageHeader } from "../../components";
 
 const programs = [
   {
@@ -66,15 +67,11 @@ function ProgramsPage() {
   useDocumentMeta("Programs", "Our flagship initiatives, launching across Delhi NCR.");
   return (
     <>
-      <section className="bg-primary py-14 text-white">
-        <div className="container-max">
-          <p className="text-xs font-bold uppercase tracking-[0.18em] text-accent">Our Work</p>
-          <h1 className="mt-3 text-4xl font-extrabold sm:text-5xl">Programs</h1>
-          <p className="mt-3 max-w-xl text-green-100">
-            {programs.length} flagship initiatives designed for measurable, long-term community impact.
-          </p>
-        </div>
-      </section>
+      <PageHeader
+        eyebrow="Our Work"
+        title="Programs"
+        description={`${programs.length} flagship initiatives designed for measurable, long-term community impact.`}
+      />
 
       <section className="py-14">
         <div className="container-max">
@@ -98,11 +95,11 @@ function ProgramsPage() {
             ))}
           </div>
 
-          <div className="mt-14 flex flex-col items-center gap-4 rounded-2xl bg-primary py-12 text-center text-white">
-            <h2 className="text-2xl font-bold">Want to support these programs?</h2>
-            <p className="max-w-md text-green-200 text-sm">Volunteer your time or donate to keep our programs running strong.</p>
+          <div className="mt-14 flex flex-col items-center gap-4 rounded-2xl border border-slate-200 dark:border-slate-700 bg-surface dark:bg-slate-800 py-12 text-center">
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Want to support these programs?</h2>
+            <p className="max-w-md text-slate-600 dark:text-slate-300 text-sm">Volunteer your time or donate to keep our programs running strong.</p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link to={ROUTES.VOLUNTEER} className="rounded-lg bg-white px-6 py-3 text-sm font-bold text-primary transition hover:bg-slate-100">Volunteer</Link>
+              <Link to={ROUTES.VOLUNTEER} className="rounded-lg bg-primary px-6 py-3 text-sm font-bold text-white transition hover:bg-primary/90">Volunteer</Link>
               <Link to={ROUTES.DONATE}    className="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-bold text-slate-900 transition hover:bg-accent/90">Donate Now <ArrowRight size={14} /></Link>
             </div>
           </div>

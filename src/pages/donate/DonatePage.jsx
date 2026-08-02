@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Copy, Check } from "lucide-react";
 import useDocumentMeta from "../../hooks/useDocumentMeta";
+import { PageHeader } from "../../components";
 
 const UPI_ID = "prachinirmal81@okicici";
 
@@ -17,15 +18,11 @@ function DonatePage() {
 
   return (
     <>
-      <section className="bg-primary py-14 text-white">
-        <div className="container-max">
-          <p className="text-xs font-bold uppercase tracking-[0.18em] text-accent">Make a Difference</p>
-          <h1 className="mt-3 text-4xl font-extrabold sm:text-5xl">Donate</h1>
-          <p className="mt-3 max-w-xl text-green-100">
-            Your contribution — however big or small — directly enables us to reach more communities and transform more lives.
-          </p>
-        </div>
-      </section>
+      <PageHeader
+        eyebrow="Make a Difference"
+        title="Donate"
+        description="Your contribution — however big or small — directly enables us to reach more communities and transform more lives."
+      />
 
       <section className="py-16">
         <div className="container-max flex flex-col items-center">

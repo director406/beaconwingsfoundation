@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { GraduationCap, Stethoscope, Wheat, Scale, Users, ArrowRight } from "lucide-react";
 import { ROUTES } from "../../utils/constants";
 import useDocumentMeta from "../../hooks/useDocumentMeta";
+import { PageHeader } from "../../components";
 
 const pillars = [
   {
@@ -52,15 +53,11 @@ function WhatWeDoPage() {
   useDocumentMeta("What We Do", "The community-focused programs we're building across Education, Healthcare, Agriculture, Legal Advisory, and Women Empowerment.");
   return (
     <>
-      <section className="bg-primary py-14 text-white">
-        <div className="container-max">
-          <p className="text-xs font-bold uppercase tracking-[0.18em] text-accent">Our Work</p>
-          <h1 className="mt-3 text-4xl font-extrabold sm:text-5xl">What We Do</h1>
-          <p className="mt-3 max-w-xl text-green-100">
-            {pillars.length} pillars of community-focused interventions designed for sustainable, long-term impact.
-          </p>
-        </div>
-      </section>
+      <PageHeader
+        eyebrow="Our Work"
+        title="What We Do"
+        description={`${pillars.length} pillars of community-focused interventions designed for sustainable, long-term impact.`}
+      />
 
       <section className="py-14">
         <div className="container-max space-y-16">
@@ -93,12 +90,12 @@ function WhatWeDoPage() {
         </div>
       </section>
 
-      <section className="bg-slate-900 dark:bg-slate-950 py-14 text-white">
+      <section className="bg-surface dark:bg-slate-800 py-14">
         <div className="container-max flex flex-col items-center gap-5 text-center">
-          <h2 className="text-3xl font-bold">Ready to make a difference?</h2>
-          <p className="max-w-lg text-slate-400">Join our volunteer network or contribute to keep these programs running strong.</p>
+          <h2 className="text-3xl font-bold text-slate-900 dark:text-white">Ready to make a difference?</h2>
+          <p className="max-w-lg text-slate-600 dark:text-slate-300">Join our volunteer network or contribute to keep these programs running strong.</p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link to={ROUTES.VOLUNTEER} className="rounded-lg bg-white px-6 py-3 text-sm font-bold text-slate-900 hover:bg-slate-100 transition">Become a Volunteer</Link>
+            <Link to={ROUTES.VOLUNTEER} className="rounded-lg bg-primary px-6 py-3 text-sm font-bold text-white hover:bg-primary/90 transition">Become a Volunteer</Link>
             <Link to={ROUTES.DONATE}    className="rounded-lg bg-accent px-6 py-3 text-sm font-bold text-slate-900 hover:bg-accent/90 transition">Donate Now</Link>
           </div>
         </div>

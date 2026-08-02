@@ -4,6 +4,7 @@ import { MapPin, Phone, Mail, CheckCircle } from "lucide-react";
 import { APP_INFO, ROUTES, FORM_INPUT } from "../../utils/constants";
 import { saveContactMessage } from "../../services/firestoreService";
 import useDocumentMeta from "../../hooks/useDocumentMeta";
+import { PageHeader } from "../../components";
 
 const INPUT = FORM_INPUT;
 
@@ -34,13 +35,11 @@ function ContactPage() {
 
   return (
     <>
-      <section className="bg-primary py-14 text-white">
-        <div className="container-max">
-          <p className="text-xs font-bold uppercase tracking-[0.18em] text-accent">Get in Touch</p>
-          <h1 className="mt-3 text-4xl font-extrabold sm:text-5xl">Contact Us</h1>
-          <p className="mt-3 max-w-xl text-green-100">We are here to collaborate, support, and respond. We'll get back within 48 hours.</p>
-        </div>
-      </section>
+      <PageHeader
+        eyebrow="Get in Touch"
+        title="Contact Us"
+        description="We are here to collaborate, support, and respond. We'll get back within 48 hours."
+      />
 
       <section className="py-14">
         <div className="container-max grid gap-8 lg:grid-cols-3">

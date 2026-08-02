@@ -242,17 +242,17 @@ function CheckInPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-primary py-20 text-white">
+      <section className="bg-surface dark:bg-slate-800 py-20">
         <div className="container-max">
           <div className="grid items-center gap-8 lg:grid-cols-2">
             <div>
-              <h1 className="text-4xl font-bold leading-tight sm:text-5xl">Check-In to Your BWF Activity</h1>
-              <p className="mt-4 text-lg text-white/85">
+              <h1 className="text-4xl font-bold leading-tight text-slate-900 dark:text-white sm:text-5xl">Check-In to Your BWF Activity</h1>
+              <p className="mt-4 text-lg text-slate-600 dark:text-slate-300">
                 Share your volunteer journey by uploading a photo and earn recognition badges that showcase your impact
               </p>
               <button
                 onClick={() => document.getElementById('checkin-form').scrollIntoView({ behavior: 'smooth' })}
-                className="mt-8 inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 text-lg font-semibold text-primary transition hover:bg-slate-100"
+                className="mt-8 inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-lg font-semibold text-white transition hover:bg-primary/90"
               >
                 <CheckCircle size={24} />
                 Check-In Now
@@ -273,8 +273,8 @@ function CheckInPage() {
                     }} />
                     <span className="relative z-10 text-4xl">{badge.icon}</span>
                   </div>
-                  <p className="font-bold uppercase tracking-wide text-white">{badge.name}</p>
-                  <p className="text-sm text-white/70">{badge.drives} {badge.drives === 1 ? 'Activity' : 'Activities'}</p>
+                  <p className="font-bold uppercase tracking-wide text-slate-900 dark:text-white">{badge.name}</p>
+                  <p className="text-sm text-slate-500 dark:text-slate-400">{badge.drives} {badge.drives === 1 ? 'Activity' : 'Activities'}</p>
                 </div>
               ))}
             </div>

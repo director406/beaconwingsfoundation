@@ -1,5 +1,5 @@
 import { Target, Eye, Heart, Users, Award, Shield, Lightbulb, HandHeart } from "lucide-react";
-import { SectionWrapper, Card, StatGrid } from "../../components";
+import { SectionWrapper, Card, StatGrid, PageHeader } from "../../components";
 import { APP_INFO } from "../../utils/constants";
 import useDocumentMeta from "../../hooks/useDocumentMeta";
 
@@ -29,16 +29,11 @@ function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-primary py-14 text-white">
-        <div className="container-max">
-          <p className="text-xs font-bold uppercase tracking-[0.18em] text-accent">Our Story</p>
-          <h1 className="mt-3 text-4xl font-extrabold sm:text-5xl">About {APP_INFO.shortName}</h1>
-          <p className="mt-3 max-w-xl text-green-100">
-            {APP_INFO.name} is a non-governmental organization dedicated to uplifting underprivileged communities
-            through sustainable, people-first programs and measurable outcomes.
-          </p>
-        </div>
-      </section>
+      <PageHeader
+        eyebrow="Our Story"
+        title={`About ${APP_INFO.shortName}`}
+        description={`${APP_INFO.name} is a non-governmental organization dedicated to uplifting underprivileged communities through sustainable, people-first programs and measurable outcomes.`}
+      />
 
       {/* Mission & Vision */}
       <section className="bg-slate-50 dark:bg-slate-800 py-16">
@@ -176,19 +171,19 @@ function AboutPage() {
       </section>
 
       {/* Impact Stats */}
-      <section className="bg-primary py-16 text-white">
+      <section className="bg-surface dark:bg-slate-800 py-16">
         <div className="container-max">
           <div className="text-center">
-            <h2 className="text-3xl font-bold">Where We Stand Today</h2>
-            <p className="mt-3 text-green-100">A new foundation, built to last</p>
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-white">Where We Stand Today</h2>
+            <p className="mt-3 text-slate-600 dark:text-slate-300">A new foundation, built to last</p>
           </div>
           <StatGrid
-            variant="plain"
+            variant="card"
             stats={[
-              { value: "2026", label: "Founded" },
-              { value: "Section 8", label: "Registered Status" },
-              { value: "3", label: "Focus Areas" },
-              { value: "Delhi NCR", label: "Where We Operate" },
+              { value: "2026", label: "Founded", accent: true },
+              { value: "Section 8", label: "Registered Status", accent: false },
+              { value: "3", label: "Focus Areas", accent: true },
+              { value: "Delhi NCR", label: "Where We Operate", accent: false },
             ]}
           />
         </div>

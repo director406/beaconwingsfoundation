@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { X } from "lucide-react";
 import useDocumentMeta from "../../hooks/useDocumentMeta";
+import { PageHeader } from "../../components";
 
 const galleryImages = [
   { url: "/images/activity-children-peace.jpeg",     title: "Community Play Session",      category: "Community"   },
@@ -24,13 +25,11 @@ function GalleryPage() {
   return (
     <>
       {/* Header */}
-      <section className="bg-primary py-14 text-white">
-        <div className="container-max">
-          <p className="text-xs font-bold uppercase tracking-[0.18em] text-accent">Our Moments</p>
-          <h1 className="mt-3 text-4xl font-extrabold sm:text-5xl">Gallery</h1>
-          <p className="mt-3 max-w-xl text-green-100">Snapshots from our field activities, community events, and volunteer drives.</p>
-        </div>
-      </section>
+      <PageHeader
+        eyebrow="Our Moments"
+        title="Gallery"
+        description="Snapshots from our field activities, community events, and volunteer drives."
+      />
 
       <section className="py-14">
         <div className="container-max">

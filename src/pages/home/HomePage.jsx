@@ -209,18 +209,18 @@ function HomePage() {
       </section>
 
       {/* ── MISSION / VISION ───────────────────────────────── */}
-      <section className="bg-primary py-12">
+      <section className="bg-surface dark:bg-slate-800 py-12">
         <div className="container-max grid gap-8 sm:grid-cols-2">
-          <div className="sm:border-r sm:border-green-600/50 sm:pr-8">
-            <h3 className="text-lg font-bold text-white">Our Mission</h3>
-            <p className="mt-3 text-sm leading-relaxed text-green-100">
+          <div className="sm:border-r sm:border-slate-300 dark:sm:border-slate-600 sm:pr-8">
+            <h3 className="text-lg font-bold text-primary">Our Mission</h3>
+            <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
               To improve quality of life for marginalized communities through sustainable social development,
               collective action, and empowerment initiatives that create lasting impact.
             </p>
           </div>
           <div className="sm:pl-8">
-            <h3 className="text-lg font-bold text-white">Our Vision</h3>
-            <p className="mt-3 text-sm leading-relaxed text-green-100">
+            <h3 className="text-lg font-bold text-primary">Our Vision</h3>
+            <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
               A just and empowered society where every individual can thrive with dignity, access equal
               opportunities, and contribute meaningfully to their communities.
             </p>
@@ -298,11 +298,11 @@ function HomePage() {
       </section>
 
       {/* ── BE THE CHANGE ──────────────────────────────────── */}
-      <section className="bg-slate-900 dark:bg-slate-950 py-16 sm:py-20">
+      <section className="bg-slate-50 dark:bg-slate-800 py-16 sm:py-20">
         <div className="container-max">
           <div className="mx-auto max-w-xl text-center">
-            <h2 className="text-3xl font-bold text-white sm:text-4xl">Be the change</h2>
-            <p className="mt-3 text-slate-400">Every action, big or small, matters.</p>
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">Be the change</h2>
+            <p className="mt-3 text-slate-500 dark:text-slate-400">Every action, big or small, matters.</p>
           </div>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {[

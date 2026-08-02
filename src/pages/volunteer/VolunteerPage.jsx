@@ -4,6 +4,7 @@ import { CheckCircle, Heart, Users, Clock, Award } from "lucide-react";
 import { saveVolunteerApplication } from "../../services/firestoreService";
 import { ROUTES, FORM_INPUT } from "../../utils/constants";
 import useDocumentMeta from "../../hooks/useDocumentMeta";
+import { PageHeader } from "../../components";
 
 const INPUT = FORM_INPUT;
 
@@ -41,15 +42,11 @@ function VolunteerPage() {
 
   return (
     <>
-      <section className="bg-primary py-14 text-white">
-        <div className="container-max">
-          <p className="text-xs font-bold uppercase tracking-[0.18em] text-accent">Get Involved</p>
-          <h1 className="mt-3 text-4xl font-extrabold sm:text-5xl">Volunteer With Us</h1>
-          <p className="mt-3 max-w-xl text-green-100">
-            Join our growing family of volunteers and contribute your time, skills, and passion toward transforming communities across India.
-          </p>
-        </div>
-      </section>
+      <PageHeader
+        eyebrow="Get Involved"
+        title="Volunteer With Us"
+        description="Join our growing family of volunteers and contribute your time, skills, and passion toward transforming communities across India."
+      />
 
       <section className="border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 py-12">
         <div className="container-max grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
