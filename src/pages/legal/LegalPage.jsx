@@ -1,6 +1,7 @@
 import { FileText, Download, Eye } from "lucide-react";
 import SectionWrapper from "../../components/common/SectionWrapper";
 import useDocumentMeta from "../../hooks/useDocumentMeta";
+import { APP_INFO } from "../../utils/constants";
 
 const documents = [
   {
@@ -99,8 +100,8 @@ function LegalPage() {
       {/* Disclaimer */}
       <p className="mt-12 text-center text-xs text-slate-400 dark:text-slate-500">
         For queries regarding any of the above documents, please contact us at{" "}
-        <a href="mailto:beaconwings2026@gmail.com" className="underline hover:text-primary">
-          beaconwings2026@gmail.com
+        <a href={`mailto:${APP_INFO.email}`} className="underline hover:text-primary">
+          {APP_INFO.email}
         </a>
         .
       </p>

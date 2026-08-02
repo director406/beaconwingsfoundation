@@ -6,7 +6,7 @@ export const APP_INFO = {
   name: "Beacon Wings Foundation",
   shortName: "BWF",
   tagline: "Empowering Lives.",
-  email: "beaconwings2026@gmail.com",
+  email: "director@beaconwingsfoundation.org",
   phone: "+91 7275982849",
   address: "E-49/5 First Floor Okhla Industrial Area Phase Il New Delhi Near - Delhi 110020",
 };

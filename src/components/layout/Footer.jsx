@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Instagram, Twitter, Facebook, ArrowRight } from "lucide-react";
+import { Instagram, Twitter, Facebook, Linkedin, ArrowRight } from "lucide-react";
 import { APP_INFO, ROUTES } from "../../utils/constants";
 import { saveSubscriber } from "../../services/firestoreService";
 
@@ -21,7 +21,8 @@ const involveLinks = [
 const socialLinks = [
   { icon: Facebook,  label: "Facebook",   href: "https://www.facebook.com/share/1Ctzp1cCpy/" },
   { icon: Twitter,   label: "Twitter / X", href: "https://x.com/Beaconwing2m" },
-  { icon: Instagram, label: "Instagram",  href: "https://www.instagram.com/beacon_wings_foundation_?utm_source=qr&igsh=MWt3djIwMm5jNGpwag==" },
+  { icon: Instagram, label: "Instagram",  href: "https://www.instagram.com/beacon_wings_foundation_/" },
+  { icon: Linkedin,  label: "LinkedIn",   href: "https://www.linkedin.com/company/beacon-wings-foundation/" },
 ];
 
 function Footer() {
