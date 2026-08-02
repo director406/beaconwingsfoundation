@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { GraduationCap, Stethoscope, Wheat, Scale, Users, ArrowRight } from "lucide-react";
 import { ROUTES } from "../../utils/constants";
+import useDocumentMeta from "../../hooks/useDocumentMeta";
 
 const pillars = [
   {
@@ -48,6 +49,7 @@ const pillars = [
 ];
 
 function WhatWeDoPage() {
+  useDocumentMeta("What We Do", "The community-focused programs we're building across Education, Healthcare, Agriculture, Legal Advisory, and Women Empowerment.");
   return (
     <>
       <section className="bg-primary py-14 text-white">

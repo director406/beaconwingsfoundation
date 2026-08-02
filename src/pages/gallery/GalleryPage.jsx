@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { X } from "lucide-react";
+import useDocumentMeta from "../../hooks/useDocumentMeta";
 
 const galleryImages = [
   { url: "/images/activity-children-peace.jpeg",     title: "Community Play Session",      category: "Community"   },
@@ -17,6 +18,7 @@ const galleryImages = [
 ];
 
 function GalleryPage() {
+  useDocumentMeta("Gallery", "Photos from our community and volunteer activities.");
   const [selectedImage, setSelectedImage] = useState(null);
 
   return (

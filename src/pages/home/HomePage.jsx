@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import { ROUTES, APP_INFO, FOCUS_AREAS } from "../../utils/constants";
 import { StatGrid } from "../../components/common";
+import useDocumentMeta from "../../hooks/useDocumentMeta";
 
 const carouselSlides = [
   {
@@ -96,6 +97,7 @@ const cultureValues = [
 ];
 
 function HomePage() {
+  useDocumentMeta("Home", "A newly registered Section 8 NGO in Delhi NCR working on Child Care, Women Empowerment, and Old Age Care.");
   const [slide, setSlide] = useState(0);
 
   useEffect(() => {

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { GraduationCap, Stethoscope, Wheat, Scale, Users, Leaf, Mic2, Laptop, ArrowRight } from "lucide-react";
 import { ROUTES } from "../../utils/constants";
+import useDocumentMeta from "../../hooks/useDocumentMeta";
 
 const programs = [
   {
@@ -62,6 +63,7 @@ const programs = [
 ];
 
 function ProgramsPage() {
+  useDocumentMeta("Programs", "Our flagship initiatives, launching across Delhi NCR.");
   return (
     <>
       <section className="bg-primary py-14 text-white">

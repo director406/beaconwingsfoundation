@@ -1,6 +1,7 @@
 import { Target, Eye, Heart, Users, Award, Shield, Lightbulb, HandHeart } from "lucide-react";
 import { SectionWrapper, Card, StatGrid } from "../../components";
 import { APP_INFO } from "../../utils/constants";
+import useDocumentMeta from "../../hooks/useDocumentMeta";
 
 const coreValues = [
   { icon: Heart,      title: "Compassion",    description: "Driven by empathy and commitment to human dignity" },
@@ -24,6 +25,7 @@ const teamMembers = [
 ];
 
 function AboutPage() {
+  useDocumentMeta("About Us", "Our mission, vision, and leadership team.");
   return (
     <>
       {/* Hero */}

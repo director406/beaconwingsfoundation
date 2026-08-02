@@ -1,5 +1,6 @@
 import { FileText, Download, Eye } from "lucide-react";
 import SectionWrapper from "../../components/common/SectionWrapper";
+import useDocumentMeta from "../../hooks/useDocumentMeta";
 
 const documents = [
   {
@@ -35,6 +36,7 @@ const documents = [
 ];
 
 function LegalPage() {
+  useDocumentMeta("Legal & Policies", "Our registration details and legal policies.");
   return (
     <SectionWrapper className="py-16">
       {/* Header */}

@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Copy, Check } from "lucide-react";
+import useDocumentMeta from "../../hooks/useDocumentMeta";
 
 const UPI_ID = "prachinirmal81@okicici";
 
 function DonatePage() {
+  useDocumentMeta("Donate", "Support our work with a direct contribution.");
   const [copied, setCopied] = useState(false);
 
   const copyUPI = () => {

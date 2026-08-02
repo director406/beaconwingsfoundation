@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://beaconwingsfoundation.org/sitemap.xml
