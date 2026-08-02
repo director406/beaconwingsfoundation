@@ -21,6 +21,7 @@ const DonatePage = lazy(() => import("../pages/donate/DonatePage"));
 const VolunteerPage = lazy(() => import("../pages/volunteer/VolunteerPage"));
 const ContactPage = lazy(() => import("../pages/contact/ContactPage"));
 const CheckInPage = lazy(() => import("../pages/checkin/CheckInPage"));
+const CertificatePage = lazy(() => import("../pages/checkin/CertificatePage"));
 const LoginPage = lazy(() => import("../pages/auth/LoginPage"));
 const SignupPage = lazy(() => import("../pages/auth/SignupPage"));
 const AdminDashboardPage = lazy(() => import("../pages/admin/AdminDashboardPage"));
@@ -59,6 +60,10 @@ function AppRoutes() {
 
         {/* Protected Routes (No Layout) */}
         <Route path={ROUTES.ADMIN} element={<AdminDashboardPage />} />
+        {/* Certificate is deliberately outside PublicLayout — it's a
+            print target, and printing the Navbar/Footer alongside it
+            would look wrong on the printed page. */}
+        <Route path={ROUTES.CERTIFICATE} element={<CertificatePage />} />
       </Routes>
     </Suspense>
   );

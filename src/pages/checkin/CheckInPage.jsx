@@ -375,6 +375,23 @@ function CheckInPage() {
                   </div>
                 </>
               )}
+
+              {userStats.currentBadge && (
+                <button
+                  onClick={() => navigate(ROUTES.CERTIFICATE, {
+                    state: {
+                      volunteerName: currentUser.name,
+                      badgeName: userStats.currentBadge.name,
+                      badgeIcon: userStats.currentBadge.icon,
+                      totalDrives: userStats.totalDrives,
+                    },
+                  })}
+                  className="mt-5 flex w-full items-center justify-center gap-2 rounded-lg border border-primary/30 bg-primary/5 px-4 py-2.5 text-sm font-semibold text-primary transition hover:bg-primary/10 dark:border-primary/40 dark:bg-primary/10"
+                >
+                  <Award size={16} />
+                  View Your Certificate
+                </button>
+              )}
             </Card>
 
             <Card className="bg-surface dark:bg-slate-800">

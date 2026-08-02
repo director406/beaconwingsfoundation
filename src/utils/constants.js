@@ -22,6 +22,7 @@ export const ROUTES = {
   CONTACT: "/contact",
   LEGAL: "/legal",
   CHECKIN: "/checkin",
+  CERTIFICATE: "/certificate",
   LOGIN: "/login",
   SIGNUP: "/signup",
   ADMIN: "/admin",
