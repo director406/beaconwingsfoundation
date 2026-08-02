@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>BWF - Empowering Lives.</title>
-    <!-- Prevent flash of light mode: apply dark class before first paint -->
+    <!-- Pre-paint theme: only apply dark if the visitor explicitly chose it
+         (stored in localStorage). Deliberately ignores OS/browser dark-mode
+         preference — there's no dark-mode toggle in the UI, so the site
+         should default to light for everyone rather than silently going
+         dark for visitors whose system prefers it. -->
     <script>
       (function () {
-        var s = localStorage.getItem('iiwc_theme');
-        if (s === 'dark' || (!s && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        if (localStorage.getItem('iiwc_theme') === 'dark') {
           document.documentElement.classList.add('dark');
         }
       })();

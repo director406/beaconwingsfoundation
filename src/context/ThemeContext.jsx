@@ -3,10 +3,15 @@ import { createContext, useContext, useEffect, useState } from "react";
 const ThemeContext = createContext({ theme: "light", toggleTheme: () => {} });
 
 export function ThemeProvider({ children }) {
+  // Defaults to light for every visitor, regardless of OS/browser dark-mode
+  // preference. There's currently no dark-mode toggle exposed anywhere in
+  // the UI (toggleTheme below is unused by any component), so previously a
+  // visitor whose system preferred dark mode would land on a dark site with
+  // no way to switch back. Explicit stored preference (if a toggle is added
+  // later) is still respected.
   const [theme, setTheme] = useState(() => {
     const stored = localStorage.getItem("iiwc_theme");
-    if (stored === "dark" || stored === "light") return stored;
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    return stored === "dark" ? "dark" : "light";
   });
 
   useEffect(() => {
@@ -18,18 +23,6 @@ export function ThemeProvider({ children }) {
     }
     localStorage.setItem("iiwc_theme", theme);
   }, [theme]);
-
-  // Also watch system preference changes when no stored preference exists
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-color-scheme: dark)");
-    const onSystemChange = (e) => {
-      if (!localStorage.getItem("iiwc_theme")) {
-        setTheme(e.matches ? "dark" : "light");
-      }
-    };
-    mq.addEventListener("change", onSystemChange);
-    return () => mq.removeEventListener("change", onSystemChange);
-  }, []);
 
   const toggleTheme = () => setTheme((t) => (t === "dark" ? "light" : "dark"));
 
