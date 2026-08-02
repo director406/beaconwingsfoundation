@@ -46,6 +46,11 @@ function AppRoutes() {
           <Route path={ROUTES.VOLUNTEER} element={<VolunteerPage />} />
           <Route path={ROUTES.CONTACT} element={<ContactPage />} />
           <Route path={ROUTES.LEGAL} element={<LegalPage />} />
+          {/* CheckIn was previously a "no layout" route with no Navbar/
+              Footer at all — a big part of why it felt disconnected from
+              the rest of the site. It's reached via the main nav like
+              everything else, so it belongs in the same layout. */}
+          <Route path={ROUTES.CHECKIN} element={<CheckInPage />} />
         </Route>
 
         {/* Auth Routes (No Layout) */}
@@ -53,7 +58,6 @@ function AppRoutes() {
         <Route path={ROUTES.SIGNUP} element={<SignupPage />} />
 
         {/* Protected Routes (No Layout) */}
-        <Route path={ROUTES.CHECKIN} element={<CheckInPage />} />
         <Route path={ROUTES.ADMIN} element={<AdminDashboardPage />} />
       </Routes>
     </Suspense>

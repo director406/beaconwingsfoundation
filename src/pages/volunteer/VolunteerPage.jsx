@@ -2,10 +2,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CheckCircle, Heart, Users, Clock, Award } from "lucide-react";
 import { saveVolunteerApplication } from "../../services/firestoreService";
-import { ROUTES } from "../../utils/constants";
+import { ROUTES, FORM_INPUT } from "../../utils/constants";
 import useDocumentMeta from "../../hooks/useDocumentMeta";
 
-const INPUT = "w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-4 py-2.5 text-sm text-slate-800 dark:text-slate-100 outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20 placeholder:text-slate-400 dark:placeholder:text-slate-500";
+const INPUT = FORM_INPUT;
 
 const perks = [
   { icon: Heart,  title: "Make Real Impact",    desc: "Directly serve communities and see the change you create." },

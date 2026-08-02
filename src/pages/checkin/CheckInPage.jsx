@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Camera, Upload, Medal, TrendingUp, MapPin, Clock, Award, Users, Heart, CheckCircle, BarChart3 } from "lucide-react";
-import { Button, Card, SectionWrapper } from "../../components";
+import { Button, Card } from "../../components";
 import { getCurrentUser, isAuthenticated } from "../../services/authService";
 import { saveCheckIn, getCheckIns, getAllCheckIns } from "../../services/firestoreService";
-import { ROUTES } from "../../utils/constants";
+import { ROUTES, FORM_INPUT } from "../../utils/constants";
+import useDocumentMeta from "../../hooks/useDocumentMeta";
 
 const BADGES = [
   { name: "Spark", drives: 1, icon: "✨", color: "bg-slate-500" },
@@ -14,6 +15,7 @@ const BADGES = [
 ];
 
 function CheckInPage() {
+  useDocumentMeta("Check In", "Log your volunteer activity and track your impact with Beacon Wings Foundation.");
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState(null);
   const [checkInData, setCheckInData] = useState({
@@ -240,17 +242,17 @@ function CheckInPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-green-600 via-green-700 to-green-800 py-20 text-white">
+      <section className="bg-primary py-20 text-white">
         <div className="container-max">
           <div className="grid items-center gap-8 lg:grid-cols-2">
             <div>
               <h1 className="text-4xl font-bold leading-tight sm:text-5xl">Check-In to Your BWF Activity</h1>
-              <p className="mt-4 text-lg text-green-100">
+              <p className="mt-4 text-lg text-white/85">
                 Share your volunteer journey by uploading a photo and earn recognition badges that showcase your impact
               </p>
               <button
                 onClick={() => document.getElementById('checkin-form').scrollIntoView({ behavior: 'smooth' })}
-                className="mt-8 inline-flex items-center gap-2 rounded-full bg-green-300 px-8 py-4 text-lg font-semibold text-green-900 transition hover:bg-green-200"
+                className="mt-8 inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 text-lg font-semibold text-primary transition hover:bg-slate-100"
               >
                 <CheckCircle size={24} />
                 Check-In Now
@@ -272,7 +274,7 @@ function CheckInPage() {
                     <span className="relative z-10 text-4xl">{badge.icon}</span>
                   </div>
                   <p className="font-bold uppercase tracking-wide text-white">{badge.name}</p>
-                  <p className="text-sm text-green-200">{badge.drives} {badge.drives === 1 ? 'Activity' : 'Activities'}</p>
+                  <p className="text-sm text-white/70">{badge.drives} {badge.drives === 1 ? 'Activity' : 'Activities'}</p>
                 </div>
               ))}
             </div>
@@ -285,72 +287,72 @@ function CheckInPage() {
         <div className="container-max">
           {selectedCity !== "all" && (
             <div className="mb-6 text-center">
-              <p className="text-sm font-semibold uppercase tracking-wide text-green-600">Showing data for</p>
-              <h3 className="mt-1 text-2xl font-bold text-slate-900">{selectedCity}</h3>
+              <p className="text-sm font-semibold uppercase tracking-wide text-primary">Showing data for</p>
+              <h3 className="mt-1 text-2xl font-bold text-slate-900 dark:text-white">{selectedCity}</h3>
             </div>
           )}
           
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            <Card className="bg-gradient-to-br from-green-50 to-white border-l-4 border-green-600">
+            <Card className="border-l-4 border-primary">
               <div className="text-center">
-                <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
-                  <Users className="text-green-600" size={32} />
+                <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
+                  <Users className="text-primary" size={32} />
                 </div>
-                <p className="text-4xl font-bold text-green-600">{weeklyStats.volunteers}</p>
-                <p className="mt-1 text-sm font-medium text-slate-600">Volunteers Active</p>
-                <p className="text-xs text-slate-400">Last 7 days</p>
+                <p className="text-4xl font-bold text-primary">{weeklyStats.volunteers}</p>
+                <p className="mt-1 text-sm font-medium text-slate-600 dark:text-slate-300">Volunteers Active</p>
+                <p className="text-xs text-slate-400 dark:text-slate-500">Last 7 days</p>
               </div>
             </Card>
 
-            <Card className="bg-gradient-to-br from-teal-50 to-white border-l-4 border-teal-600">
+            <Card className="border-l-4 border-red-600 dark:border-red-500">
               <div className="text-center">
-                <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-teal-100">
-                  <Heart className="text-teal-600" size={32} />
+                <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-red-50 dark:bg-red-900/20">
+                  <Heart className="text-red-600 dark:text-red-400" size={32} />
                 </div>
-                <p className="text-4xl font-bold text-teal-600">{weeklyStats.beneficiaries.toLocaleString()}</p>
-                <p className="mt-1 text-sm font-medium text-slate-600">Lives Impacted</p>
-                <p className="text-xs text-slate-400">Last 7 days</p>
+                <p className="text-4xl font-bold text-red-600 dark:text-red-400">{weeklyStats.beneficiaries.toLocaleString()}</p>
+                <p className="mt-1 text-sm font-medium text-slate-600 dark:text-slate-300">Lives Impacted</p>
+                <p className="text-xs text-slate-400 dark:text-slate-500">Last 7 days</p>
               </div>
             </Card>
 
-            <Card className="bg-gradient-to-br from-amber-50 to-white border-l-4 border-amber-600">
+            <Card className="border-l-4 border-accent">
               <div className="text-center">
-                <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-amber-100">
-                  <Award className="text-amber-600" size={32} />
+                <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-accent/10">
+                  <Award className="text-accent" size={32} />
                 </div>
-                <p className="text-4xl font-bold text-amber-600">{weeklyStats.activities}</p>
-                <p className="mt-1 text-sm font-medium text-slate-600">Activities Completed</p>
-                <p className="text-xs text-slate-400">Last 7 days</p>
+                <p className="text-4xl font-bold text-accent">{weeklyStats.activities}</p>
+                <p className="mt-1 text-sm font-medium text-slate-600 dark:text-slate-300">Activities Completed</p>
+                <p className="text-xs text-slate-400 dark:text-slate-500">Last 7 days</p>
               </div>
             </Card>
 
-            <Card className="bg-gradient-to-br from-purple-50 to-white border-l-4 border-purple-600">
+            <Card className="border-l-4 border-purple-700 dark:border-purple-500">
               <div className="text-center">
-                <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-purple-100">
-                  <Clock className="text-purple-600" size={32} />
+                <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-purple-50 dark:bg-purple-900/20">
+                  <Clock className="text-purple-700 dark:text-purple-400" size={32} />
                 </div>
-                <p className="text-4xl font-bold text-purple-600">{weeklyStats.hours.toFixed(0)}</p>
-                <p className="mt-1 text-sm font-medium text-slate-600">Hours Volunteered</p>
-                <p className="text-xs text-slate-400">Last 7 days</p>
+                <p className="text-4xl font-bold text-purple-700 dark:text-purple-400">{weeklyStats.hours.toFixed(0)}</p>
+                <p className="mt-1 text-sm font-medium text-slate-600 dark:text-slate-300">Hours Volunteered</p>
+                <p className="text-xs text-slate-400 dark:text-slate-500">Last 7 days</p>
               </div>
             </Card>
           </div>
 
           {/* User Progress */}
           <div className="mt-8 grid gap-6 lg:grid-cols-2">
-            <Card className="border-2 border-green-100">
+            <Card>
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <div className="rounded-full bg-green-100 p-3 text-green-600">
+                  <div className="rounded-full bg-primary/10 p-3 text-primary">
                     <Award size={28} />
                   </div>
                   <div>
-                    <p className="text-sm text-slate-500">Your Activities</p>
-                    <p className="text-3xl font-bold text-green-600">{userStats.totalDrives}</p>
+                    <p className="text-sm text-slate-500 dark:text-slate-400">Your Activities</p>
+                    <p className="text-3xl font-bold text-primary">{userStats.totalDrives}</p>
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-sm font-medium text-slate-600">Current Badge</p>
+                  <p className="text-sm font-medium text-slate-600 dark:text-slate-300">Current Badge</p>
                   <p className="text-2xl font-bold text-primary">
                     {userStats.currentBadge ? `${userStats.currentBadge.icon} ${userStats.currentBadge.name}` : "🌟 Start Now"}
                   </p>
@@ -361,12 +363,12 @@ function CheckInPage() {
                 <>
                   <div className="mt-4">
                     <div className="flex justify-between text-sm mb-2">
-                      <span className="font-medium text-slate-600">Progress to {getNextBadge().icon} {getNextBadge().name}</span>
-                      <span className="font-bold text-green-600">{userStats.totalDrives}/{getNextBadge().drives}</span>
+                      <span className="font-medium text-slate-600 dark:text-slate-300">Progress to {getNextBadge().icon} {getNextBadge().name}</span>
+                      <span className="font-bold text-primary">{userStats.totalDrives}/{getNextBadge().drives}</span>
                     </div>
-                    <div className="h-3 overflow-hidden rounded-full bg-slate-200">
+                    <div className="h-3 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700">
                       <div 
-                        className="h-full bg-gradient-to-r from-green-500 to-green-600 transition-all duration-500"
+                        className="h-full bg-primary transition-all duration-500"
                         style={{ width: `${getBadgeProgress()}%` }}
                       />
                     </div>
@@ -375,14 +377,14 @@ function CheckInPage() {
               )}
             </Card>
 
-            <Card className="border-2 border-green-100 bg-gradient-to-br from-green-50 to-white">
+            <Card className="bg-surface dark:bg-slate-800">
               <div className="text-center">
                 <p className="text-sm font-semibold uppercase tracking-wide text-primary">Join the Movement</p>
-                <h3 className="mt-2 text-2xl font-bold text-slate-900">Check-in to your next activity!</h3>
-                <p className="mt-2 text-slate-600">And you may see yourself featured here</p>
+                <h3 className="mt-2 text-2xl font-bold text-slate-900 dark:text-white">Check-in to your next activity!</h3>
+                <p className="mt-2 text-slate-600 dark:text-slate-300">And you may see yourself featured here</p>
                 <button
                   onClick={() => document.getElementById('checkin-form').scrollIntoView({ behavior: 'smooth' })}
-                  className="mt-4 inline-flex items-center gap-2 rounded-full bg-green-500 px-6 py-3 text-white font-semibold transition hover:bg-green-600"
+                  className="mt-4 inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-white font-semibold transition hover:bg-primary/90"
                 >
                   <CheckCircle size={20} />
                   Check-In Now
@@ -398,19 +400,19 @@ function CheckInPage() {
         <div className="container-max">
           <div className="mb-8">
             <div className="text-center mb-6">
-              <p className="text-sm font-semibold uppercase tracking-wide text-green-600">RECENT CHECK-INS</p>
-              <h2 className="mt-2 text-3xl font-bold text-slate-900">
+              <p className="text-sm font-semibold uppercase tracking-wide text-primary">RECENT CHECK-INS</p>
+              <h2 className="mt-2 text-3xl font-bold text-slate-900 dark:text-white">
                 Volunteers Making Impact Across India
               </h2>
-              <p className="mt-2 text-slate-600">Real-time updates from our volunteer community</p>
+              <p className="mt-2 text-slate-600 dark:text-slate-300">Real-time updates from our volunteer community</p>
             </div>
             
             {/* City Selector */}
             <div className="flex justify-center items-center gap-4 mt-6">
-              <div className="flex items-center gap-3 rounded-xl border-2 border-green-100 dark:border-green-900/50 bg-white dark:bg-slate-800 px-6 py-3 shadow-sm">
-                <MapPin className="text-green-600" size={20} />
+              <div className="flex items-center gap-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-6 py-3 shadow-sm">
+                <MapPin className="text-primary" size={20} />
                 <div>
-                  <p className="text-xs font-medium text-slate-500 uppercase">Look up any city</p>
+                  <p className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase">Look up any city</p>
                   <select
                     value={selectedCity}
                     onChange={(e) => setSelectedCity(e.target.value)}
@@ -427,7 +429,7 @@ function CheckInPage() {
               {selectedCity !== "all" && (
                 <button
                   onClick={() => setSelectedCity("all")}
-                  className="text-sm font-medium text-green-600 hover:text-green-700 underline"
+                  className="text-sm font-medium text-primary hover:text-primary/80 underline"
                 >
                   Clear filter
                 </button>
@@ -437,9 +439,9 @@ function CheckInPage() {
 
           {filteredCheckIns.length === 0 ? (
             <Card className="text-center py-12">
-              <Camera size={64} className="mx-auto text-slate-300 mb-4" />
-              <p className="text-xl font-semibold text-slate-600">No check-ins yet</p>
-              <p className="text-slate-500 mt-2">
+              <Camera size={64} className="mx-auto text-slate-300 dark:text-slate-600 mb-4" />
+              <p className="text-xl font-semibold text-slate-600 dark:text-slate-300">No check-ins yet</p>
+              <p className="text-slate-500 dark:text-slate-400 mt-2">
                 {selectedCity === "all" 
                   ? "Be the first to share your volunteer activity!" 
                   : `No check-ins found in ${selectedCity}`}
@@ -449,8 +451,8 @@ function CheckInPage() {
             <>
               {selectedCity !== "all" && (
                 <div className="mb-6 text-center">
-                  <p className="text-lg font-semibold text-slate-700">
-                    <span className="text-green-600">{filteredCheckIns.length}</span> {filteredCheckIns.length === 1 ? 'check-in' : 'check-ins'} in <span className="text-green-600">{selectedCity}</span>
+                  <p className="text-lg font-semibold text-slate-700 dark:text-slate-200">
+                    <span className="text-primary">{filteredCheckIns.length}</span> {filteredCheckIns.length === 1 ? 'check-in' : 'check-ins'} in <span className="text-primary">{selectedCity}</span>
                   </p>
                 </div>
               )}
@@ -464,7 +466,7 @@ function CheckInPage() {
                         className="h-full w-full object-cover transition duration-300 group-hover:scale-110"
                       />
                     ) : (
-                      <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-green-400 to-green-600">
+                      <div className="flex h-full w-full items-center justify-center bg-primary">
                         <Camera size={48} className="text-white opacity-50" />
                       </div>
                     )}
@@ -477,7 +479,7 @@ function CheckInPage() {
                       </p>
                     </div>
                     <div className="absolute top-2 right-2">
-                      <div className="rounded-full bg-white/90 px-2 py-1 text-xs font-semibold text-green-700">
+                      <div className="rounded-full bg-white/90 px-2 py-1 text-xs font-semibold text-primary">
                         {checkIn.activity}
                       </div>
                     </div>
@@ -493,7 +495,7 @@ function CheckInPage() {
       <section className="bg-white dark:bg-slate-900 py-16">
         <div className="container-max">
           <div className="mb-8 text-center">
-            <p className="text-sm font-semibold uppercase tracking-wide text-amber-600">ACTIVITY HIGHLIGHTS</p>
+            <p className="text-sm font-semibold uppercase tracking-wide text-accent">ACTIVITY HIGHLIGHTS</p>
             <h2 className="mt-2 text-3xl font-bold text-slate-900 dark:text-white">
               {selectedCity === "all" ? "Impact Across the Nation" : `Impact in ${selectedCity}`}
             </h2>
@@ -503,12 +505,12 @@ function CheckInPage() {
             {/* City Leaderboard */}
             <Card className="p-6">
               <div className="mb-6 flex items-center gap-3">
-                <div className="rounded-full bg-amber-100 p-3">
-                  <MapPin className="text-amber-600" size={24} />
+                <div className="rounded-full bg-accent/10 p-3">
+                  <MapPin className="text-accent" size={24} />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-slate-900">Top Cities</h3>
-                  <p className="text-sm text-slate-500">Most active locations in last 30 days</p>
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white">Top Cities</h3>
+                  <p className="text-sm text-slate-500 dark:text-slate-400">Most active locations in last 30 days</p>
                 </div>
               </div>
               
@@ -522,16 +524,16 @@ function CheckInPage() {
                       <div key={city.city}>
                         <div className="flex justify-between items-center mb-2">
                           <div className="flex items-center gap-2">
-                            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-green-100 text-sm font-bold text-green-700">
+                            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-primary/10 text-sm font-bold text-primary">
                               {index + 1}
                             </span>
-                            <span className="font-semibold text-slate-700">{city.city}</span>
+                            <span className="font-semibold text-slate-700 dark:text-slate-200">{city.city}</span>
                           </div>
-                          <span className="text-lg font-bold text-green-600">{city.count}</span>
+                          <span className="text-lg font-bold text-primary">{city.count}</span>
                         </div>
-                        <div className="h-2.5 overflow-hidden rounded-full bg-slate-100">
+                        <div className="h-2.5 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-700">
                           <div 
-                            className="h-full rounded-full bg-gradient-to-r from-green-400 to-green-600"
+                            className="h-full rounded-full bg-primary"
                             style={{ width: `${percentage}%` }}
                           />
                         </div>
@@ -540,44 +542,40 @@ function CheckInPage() {
                   })}
                 </div>
               ) : (
-                <p className="text-center text-slate-400 py-8">No data available yet</p>
+                <p className="text-center text-slate-400 dark:text-slate-500 py-8">No data available yet</p>
               )}
             </Card>
 
             {/* Activity Type Breakdown */}
             <Card className="p-6">
               <div className="mb-6 flex items-center gap-3">
-                <div className="rounded-full bg-green-100 p-3">
+                <div className="rounded-full bg-primary/10 p-3">
                   <BarChart3 className="text-primary" size={24} />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-slate-900">Activity Breakdown</h3>
-                  <p className="text-sm text-slate-500">Popular volunteer activities</p>
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white">Activity Breakdown</h3>
+                  <p className="text-sm text-slate-500 dark:text-slate-400">Popular volunteer activities</p>
                 </div>
               </div>
               
               {activityBreakdown.length > 0 ? (
                 <div className="space-y-4">
                   {activityBreakdown.map((activity, index) => {
-                    const colors = [
-                      'from-teal-400 to-teal-600',
-                      'from-purple-400 to-purple-600',
-                      'from-pink-400 to-pink-600',
-                      'from-amber-400 to-amber-600',
-                      'from-emerald-400 to-emerald-600'
-                    ];
+                    // Rotates through colors already used elsewhere in the app's
+                    // palette (pillar cards, badges) instead of introducing new ones.
+                    const colors = ['bg-primary', 'bg-accent', 'bg-teal-600', 'bg-purple-700'];
                     const maxCount = activityBreakdown[0]?.count || 1;
                     const percentage = (activity.count / maxCount) * 100;
                     
                     return (
                       <div key={activity.activity}>
                         <div className="flex justify-between items-center mb-2">
-                          <span className="font-semibold text-slate-700">{activity.activity}</span>
+                          <span className="font-semibold text-slate-700 dark:text-slate-200">{activity.activity}</span>
                           <span className="text-lg font-bold text-primary">{activity.count}</span>
                         </div>
-                        <div className="h-2.5 overflow-hidden rounded-full bg-slate-100">
+                        <div className="h-2.5 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-700">
                           <div 
-                            className={`h-full rounded-full bg-gradient-to-r ${colors[index % colors.length]}`}
+                            className={`h-full rounded-full ${colors[index % colors.length]}`}
                             style={{ width: `${percentage}%` }}
                           />
                         </div>
@@ -586,7 +584,7 @@ function CheckInPage() {
                   })}
                 </div>
               ) : (
-                <p className="text-center text-slate-400 py-8">No data available yet</p>
+                <p className="text-center text-slate-400 dark:text-slate-500 py-8">No data available yet</p>
               )}
             </Card>
           </div>
@@ -595,12 +593,12 @@ function CheckInPage() {
 
       {/* Featured Volunteers */}
       {topVolunteers.length > 0 && (
-        <section className="bg-gradient-to-br from-green-50 to-orange-50 py-16">
+        <section className="bg-white dark:bg-slate-900 py-16">
           <div className="container-max">
             <div className="mb-8 text-center">
-              <p className="text-sm font-semibold uppercase tracking-wide text-green-600">CHAMPIONS OF CHANGE</p>
-              <h2 className="mt-2 text-3xl font-bold text-slate-900">Most Active Volunteers</h2>
-              <p className="mt-2 text-slate-600">Recognizing our dedicated community leaders</p>
+              <p className="text-sm font-semibold uppercase tracking-wide text-primary">CHAMPIONS OF CHANGE</p>
+              <h2 className="mt-2 text-3xl font-bold text-slate-900 dark:text-white">Most Active Volunteers</h2>
+              <p className="mt-2 text-slate-600 dark:text-slate-300">Recognizing our dedicated community leaders</p>
             </div>
 
             <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
@@ -615,7 +613,7 @@ function CheckInPage() {
                       />
                     </div>
                   ) : (
-                    <div className="aspect-square flex items-center justify-center bg-gradient-to-br from-green-400 to-green-600">
+                    <div className="aspect-square flex items-center justify-center bg-primary">
                       <span className="text-6xl font-bold text-white">
                         {volunteer.name.charAt(0).toUpperCase()}
                       </span>
@@ -633,9 +631,9 @@ function CheckInPage() {
                   </div>
 
                   <div className="p-4">
-                    <p className="font-bold text-slate-900">{volunteer.name}</p>
-                    <p className="text-sm font-medium text-green-600">Latest {volunteer.badge.name}</p>
-                    <p className="mt-1 text-xs text-slate-500">{volunteer.count} {volunteer.count === 1 ? 'Activity' : 'Activities'}</p>
+                    <p className="font-bold text-slate-900 dark:text-white">{volunteer.name}</p>
+                    <p className="text-sm font-medium text-primary">Latest {volunteer.badge.name}</p>
+                    <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{volunteer.count} {volunteer.count === 1 ? 'Activity' : 'Activities'}</p>
                   </div>
                 </Card>
               ))}
@@ -648,14 +646,14 @@ function CheckInPage() {
       <section className="bg-white dark:bg-slate-900 py-16">
         <div className="container-max">
           <div id="checkin-form" className="scroll-mt-20">
-            <Card className="mx-auto max-w-3xl border-2 border-green-100 shadow-xl">
+            <Card className="mx-auto max-w-3xl shadow-xl">
               <div className="mb-6 text-center">
-                <h2 className="text-3xl font-bold text-green-600">Log Your Activity</h2>
-                <p className="mt-2 text-slate-600">Upload a photo and details from your volunteer activity</p>
+                <h2 className="text-3xl font-bold text-primary">Log Your Activity</h2>
+                <p className="mt-2 text-slate-600 dark:text-slate-300">Upload a photo and details from your volunteer activity</p>
               </div>
 
               {success && (
-                <div className="mb-6 rounded-xl border-2 border-green-200 bg-green-50 px-4 py-3 text-center text-green-700">
+                <div className="mb-6 rounded-xl border border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-900/20 px-4 py-3 text-center text-green-700 dark:text-green-400">
                   <p className="font-semibold">{success}</p>
                 </div>
               )}
@@ -663,7 +661,7 @@ function CheckInPage() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Photo Upload */}
                 <div>
-                  <label className="mb-3 block text-center text-sm font-semibold text-slate-700">
+                  <label className="mb-3 block text-center text-sm font-semibold text-slate-700 dark:text-slate-200">
                     <Camera className="mr-1 inline" size={18} />
                     Upload Activity Photo (Optional)
                   </label>
@@ -680,18 +678,18 @@ function CheckInPage() {
                           setPreviewImage(null);
                           setCheckInData({ ...checkInData, photo: null });
                         }}
-                        className="absolute right-3 top-3 rounded-full bg-red-500 p-2 text-white shadow-lg hover:bg-red-600"
+                        className="absolute right-3 top-3 rounded-full bg-red-600 p-2 text-white shadow-lg hover:bg-red-700"
                       >
                         ✕
                       </button>
                     </div>
                   ) : (
-                    <label className="flex h-80 cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-green-300 bg-green-50 transition hover:border-green-400 hover:bg-green-100">
-                      <div className="rounded-full bg-green-200 p-6">
-                        <Upload size={48} className="text-green-600" />
+                    <label className="flex h-80 cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed border-primary/30 bg-primary/5 transition hover:border-primary/50 hover:bg-primary/10 dark:border-primary/40 dark:bg-primary/10">
+                      <div className="rounded-full bg-primary/10 p-6">
+                        <Upload size={48} className="text-primary" />
                       </div>
-                      <p className="mt-4 text-lg font-semibold text-green-700">Click to upload activity photo</p>
-                      <p className="mt-1 text-sm text-slate-500">Upload a selfie from your volunteer activity</p>
+                      <p className="mt-4 text-lg font-semibold text-primary">Click to upload activity photo</p>
+                      <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Upload a selfie from your volunteer activity</p>
                       <input
                         type="file"
                         accept="image/*"
@@ -704,12 +702,12 @@ function CheckInPage() {
 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
-                    <label className="mb-2 block text-sm font-medium text-slate-700">Activity Type *</label>
+                    <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">Activity Type *</label>
                     <select
                       name="activity"
                       value={checkInData.activity}
                       onChange={handleChange}
-                      className="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-sm outline-none ring-green-500 focus:ring-2"
+                      className={FORM_INPUT}
                       required
                     >
                       <option value="">Select Activity</option>
@@ -724,20 +722,20 @@ function CheckInPage() {
                   </div>
 
                   <div>
-                    <label className="mb-2 block text-sm font-medium text-slate-700">Location *</label>
+                    <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">Location *</label>
                     <input
                       type="text"
                       name="location"
                       value={checkInData.location}
                       onChange={handleChange}
                       placeholder="City/Village name"
-                      className="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-sm outline-none ring-green-500 focus:ring-2"
+                      className={FORM_INPUT}
                       required
                     />
                   </div>
 
                   <div>
-                    <label className="mb-2 block text-sm font-medium text-slate-700">Beneficiaries Served *</label>
+                    <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">Beneficiaries Served *</label>
                     <input
                       type="number"
                       name="beneficiaries"
@@ -745,13 +743,13 @@ function CheckInPage() {
                       onChange={handleChange}
                       placeholder="Number of people"
                       min="1"
-                      className="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-sm outline-none ring-green-500 focus:ring-2"
+                      className={FORM_INPUT}
                       required
                     />
                   </div>
 
                   <div>
-                    <label className="mb-2 block text-sm font-medium text-slate-700">Hours Volunteered *</label>
+                    <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">Hours Volunteered *</label>
                     <input
                       type="number"
                       name="hours"
@@ -760,31 +758,31 @@ function CheckInPage() {
                       placeholder="Hours (e.g., 2.5)"
                       min="0.5"
                       step="0.5"
-                      className="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-sm outline-none ring-green-500 focus:ring-2"
+                      className={FORM_INPUT}
                       required
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="mb-2 block text-sm font-medium text-slate-700">Notes (Optional)</label>
+                  <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">Notes (Optional)</label>
                   <textarea
                     name="notes"
                     value={checkInData.notes}
                     onChange={handleChange}
                     placeholder="Share your experience..."
                     rows={3}
-                    className="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-sm outline-none ring-green-500 focus:ring-2"
+                    className={FORM_INPUT}
                   />
                 </div>
 
-                <button
+                <Button
                   type="submit"
-                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-green-500 to-green-600 px-8 py-4 text-lg font-semibold text-white shadow-lg transition hover:from-green-600 hover:to-green-700"
+                  className="flex w-full items-center justify-center gap-2 py-4 text-lg"
                 >
                   <Camera size={22} />
                   Submit Check-In
-                </button>
+                </Button>
               </form>
             </Card>
           </div>
