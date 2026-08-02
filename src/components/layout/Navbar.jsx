@@ -35,13 +35,13 @@ function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-40 border-b border-slate-200/70 bg-white/95 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-slate-200/70 dark:border-slate-700 bg-white/95 dark:bg-slate-900/95 backdrop-blur">
       <div className="container-max flex h-20 items-center justify-between">
         <Link to={ROUTES.HOME} className="flex items-center gap-2">
           <img src="/images/logo.jpeg" alt={APP_INFO.name} className="h-14 w-14 rounded-full object-cover shadow-sm" />
           <div>
             <p className="text-sm font-bold text-primary leading-tight">{APP_INFO.name}</p>
-            <p className="text-xs text-slate-500">{APP_INFO.tagline}</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400">{APP_INFO.tagline}</p>
           </div>
         </Link>
 
@@ -51,7 +51,7 @@ function Navbar() {
               key={link.path}
               to={link.path}
               className={({ isActive }) =>
-                `text-sm font-medium transition ${isActive ? "text-primary" : "text-slate-600 hover:text-primary"}`
+                `text-sm font-medium transition ${isActive ? "text-primary" : "text-slate-600 dark:text-slate-300 hover:text-primary"}`
               }
             >
               {link.name}
@@ -59,13 +59,13 @@ function Navbar() {
           ))}
           {currentUser ? (
             <div className="flex items-center gap-3">
-              <div className="flex items-center gap-2 rounded-xl2 bg-green-50 px-3 py-2">
+              <div className="flex items-center gap-2 rounded-xl2 bg-primary/10 px-3 py-2">
                 <User size={16} className="text-primary" />
                 <span className="text-sm font-medium text-primary">{currentUser.name}</span>
               </div>
               <button
                 onClick={handleLogout}
-                className="flex items-center gap-2 rounded-xl2 border border-red-300 bg-red-50 px-3 py-2 text-sm font-medium text-red-700 transition hover:bg-red-100"
+                className="flex items-center gap-2 rounded-xl2 border border-red-300 dark:border-red-800 bg-red-50 dark:bg-red-900/20 px-3 py-2 text-sm font-medium text-red-700 dark:text-red-400 transition hover:bg-red-100 dark:hover:bg-red-900/40"
               >
                 <LogOut size={16} />
                 Logout
@@ -92,7 +92,7 @@ function Navbar() {
       </div>
 
       {open && (
-        <div id="mobile-nav-panel" className="border-t border-slate-200 bg-white lg:hidden">
+        <div id="mobile-nav-panel" className="border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 lg:hidden">
           <div className="container-max flex flex-col gap-3 py-4">
             {NAV_LINKS.map((link) => (
               <NavLink
@@ -100,7 +100,7 @@ function Navbar() {
                 to={link.path}
                 onClick={() => setOpen(false)}
                 className={({ isActive }) =>
-                  `rounded-lg px-3 py-2 text-sm font-medium ${isActive ? "bg-green-50 text-primary" : "text-slate-600"}`
+                  `rounded-lg px-3 py-2 text-sm font-medium ${isActive ? "bg-primary/10 text-primary" : "text-slate-600 dark:text-slate-300"}`
                 }
               >
                 {link.name}
@@ -108,14 +108,14 @@ function Navbar() {
             ))}
             {currentUser ? (
               <>
-                <div className="flex items-center gap-2 rounded-lg bg-green-50 px-3 py-2">
+                <div className="flex items-center gap-2 rounded-lg bg-primary/10 px-3 py-2">
                   <User size={16} className="text-primary" />
                   <span className="text-sm font-medium text-primary">{currentUser.name}</span>
-                  <span className="ml-auto text-xs text-slate-500">({currentUser.role})</span>
+                  <span className="ml-auto text-xs text-slate-500 dark:text-slate-400">({currentUser.role})</span>
                 </div>
                 <button
                   onClick={handleLogout}
-                  className="flex items-center justify-center gap-2 rounded-lg border border-red-300 bg-red-50 px-3 py-2 text-sm font-medium text-red-700"
+                  className="flex items-center justify-center gap-2 rounded-lg border border-red-300 dark:border-red-800 bg-red-50 dark:bg-red-900/20 px-3 py-2 text-sm font-medium text-red-700 dark:text-red-400"
                 >
                   <LogOut size={16} />
                   Logout
