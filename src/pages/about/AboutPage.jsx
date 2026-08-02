@@ -1,5 +1,5 @@
 import { Target, Eye, Heart, Users, Award, Shield, Lightbulb, HandHeart } from "lucide-react";
-import { SectionWrapper, Card } from "../../components";
+import { SectionWrapper, Card, StatGrid } from "../../components";
 import { APP_INFO } from "../../utils/constants";
 
 const coreValues = [
@@ -189,19 +189,15 @@ function AboutPage() {
             <h2 className="text-3xl font-bold">Where We Stand Today</h2>
             <p className="mt-3 text-green-100">A new foundation, built to last</p>
           </div>
-          <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              { value: "2026",      label: "Founded" },
+          <StatGrid
+            variant="plain"
+            stats={[
+              { value: "2026", label: "Founded" },
               { value: "Section 8", label: "Registered Status" },
-              { value: "3",         label: "Focus Areas" },
+              { value: "3", label: "Focus Areas" },
               { value: "Delhi NCR", label: "Where We Operate" },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center">
-                <p className="text-5xl font-bold text-accent">{stat.value}</p>
-                <p className="mt-2 text-green-100">{stat.label}</p>
-              </div>
-            ))}
-          </div>
+            ]}
+          />
         </div>
       </section>
     </>

@@ -5,6 +5,7 @@ import {
   ChevronLeft, ChevronRight, ArrowRight,
 } from "lucide-react";
 import { ROUTES, APP_INFO, FOCUS_AREAS } from "../../utils/constants";
+import { StatGrid } from "../../components/common";
 
 const carouselSlides = [
   {
@@ -231,14 +232,7 @@ function HomePage() {
           <div className="mx-auto max-w-xl text-center">
             <h2 className="text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">Who we are, right now</h2>
           </div>
-          <div className="mt-12 overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm sm:grid sm:grid-cols-2 lg:grid-cols-4">
-            {impactStats.map((s, i) => (
-              <div key={s.label} className={`bg-white dark:bg-slate-800 px-8 py-10 text-center ${i < impactStats.length - 1 ? "border-b border-slate-200 dark:border-slate-700 sm:border-b-0 sm:border-r" : ""}`}>
-                <p className={`text-5xl font-extrabold ${s.accent ? "text-primary" : "text-accent"}`}>{s.value}</p>
-                <p className="mt-2 text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400">{s.label}</p>
-              </div>
-            ))}
-          </div>
+          <StatGrid stats={impactStats} />
         </div>
       </section>
 
