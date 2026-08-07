@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { GraduationCap, BookOpen, Apple, Briefcase, HeartHandshake, PiggyBank, HeartPulse, Users, ArrowRight } from "lucide-react";
+import { GraduationCap, BookOpen, Apple, Briefcase, HeartHandshake, PiggyBank, HeartPulse, Users, PawPrint, ArrowRight } from "lucide-react";
 import { ROUTES } from "../../utils/constants";
 import useDocumentMeta from "../../hooks/useDocumentMeta";
 import { PageHeader } from "../../components";
@@ -62,6 +62,21 @@ const programs = [
     icon: HeartPulse,
     color: { bg: "bg-red-50 dark:bg-red-900/20", text: "text-red-600 dark:text-red-400", badge: "bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300" },
     desc: "Health check-ups and wellness support tailored for elderly needs, connecting seniors with essential care.",
+    stats: ["Launching 2026", "Delhi NCR"],
+  },
+  // Animal Welfare — Department Head: Poonam Agrawal
+  {
+    id: 9, name: "Stray Animal Rescue & Care", category: "Animal Welfare",
+    icon: PawPrint,
+    color: { bg: "bg-lime-50 dark:bg-lime-900/20", text: "text-lime-700 dark:text-lime-400", badge: "bg-lime-100 dark:bg-lime-900/40 text-lime-700 dark:text-lime-300" },
+    desc: "Rescue support and basic care for injured or stray animals in our communities, connecting them with veterinary help.",
+    stats: ["Launching 2026", "Delhi NCR"],
+  },
+  {
+    id: 10, name: "Community Feeding & Vaccination Drives", category: "Animal Welfare",
+    icon: HeartHandshake,
+    color: { bg: "bg-lime-50 dark:bg-lime-900/20", text: "text-lime-700 dark:text-lime-400", badge: "bg-lime-100 dark:bg-lime-900/40 text-lime-700 dark:text-lime-300" },
+    desc: "Regular feeding drives and vaccination/sterilization awareness camps run with local volunteers.",
     stats: ["Launching 2026", "Delhi NCR"],
   },
 ];

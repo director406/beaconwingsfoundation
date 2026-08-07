@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
-  GraduationCap, Users, Heart,
+  GraduationCap, Users, Heart, PawPrint,
   ChevronLeft, ChevronRight, ArrowRight,
 } from "lucide-react";
 import { ROUTES, APP_INFO, FOCUS_AREAS } from "../../utils/constants";
@@ -82,11 +82,12 @@ const journeyEras = [
 // testimonials once programs are running; until then the section below
 // shows an honest "just getting started" panel instead.
 
-const focusIconMap   = [GraduationCap, Users, Heart];
+const focusIconMap   = [GraduationCap, Users, Heart, PawPrint];
 const focusColorMap  = [
   { bg: "bg-teal-50   dark:bg-teal-900/20",   text: "text-teal-700   dark:text-teal-400"   },
   { bg: "bg-purple-50 dark:bg-purple-900/20", text: "text-purple-700 dark:text-purple-400" },
   { bg: "bg-red-50    dark:bg-red-900/20",    text: "text-red-600    dark:text-red-400"    },
+  { bg: "bg-lime-50   dark:bg-lime-900/20",   text: "text-lime-700   dark:text-lime-400"   },
 ];
 
 const cultureValues = [
@@ -95,7 +96,7 @@ const cultureValues = [
 ];
 
 function HomePage() {
-  useDocumentMeta("Home", "A newly registered Section 8 NGO in Delhi NCR working on Child Care, Women Empowerment, and Old Age Care.");
+  useDocumentMeta("Home", "A newly registered Section 8 NGO in Delhi NCR working on Child Care, Women Empowerment, Old Age Care, and Animal Welfare.");
   const [slide, setSlide] = useState(0);
 
   useEffect(() => {
@@ -243,7 +244,7 @@ function HomePage() {
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-accent">What We Do</p>
             <h2 className="mt-3 text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">{FOCUS_AREAS.length} pillars of change</h2>
           </div>
-          <div className="mt-12 grid gap-5 sm:grid-cols-3">
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {FOCUS_AREAS.map(({ title, description }, idx) => {
               const Icon = focusIconMap[idx];
               const { bg, text } = focusColorMap[idx];

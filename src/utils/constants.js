@@ -63,6 +63,11 @@ export const FOCUS_AREAS = [
     title: "Old Age People Care",
     description: "Companionship, health support, and dignified care programs for the elderly in our communities.",
   },
+  {
+    id: "animal-welfare",
+    title: "Animal Welfare",
+    description: "Rescue, care, and welfare initiatives for animals in need across the communities we serve.",
+  },
 ];
 
 export const USER_ROLES = {

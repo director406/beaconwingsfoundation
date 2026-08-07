@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { GraduationCap, Users, Heart, ArrowRight } from "lucide-react";
+import { GraduationCap, Users, Heart, PawPrint, ArrowRight } from "lucide-react";
 import { ROUTES } from "../../utils/constants";
 import useDocumentMeta from "../../hooks/useDocumentMeta";
 import { PageHeader } from "../../components";
@@ -30,10 +30,17 @@ const pillars = [
     desc: "Millions of elderly Indians live alone or without adequate support as family structures change. BWF is building programs centered on companionship, health support, and dignity for the elderly members of our communities.",
     highlights: ["Companionship visits and community engagement for seniors", "Health and wellness camps tailored for elderly needs", "Support connecting seniors with essential services", "Dignity-focused care programs, starting locally"],
   },
+  {
+    icon: PawPrint, title: "Animal Welfare", tagline: "Every life deserves care",
+    color: { bg: "bg-lime-600", light: "bg-lime-50 dark:bg-lime-900/20", text: "text-lime-700 dark:text-lime-400", dot: "bg-lime-600" },
+    image: "/images/community-volunteers-group.jpeg",
+    desc: "Street animals and strays in our communities often face neglect, injury, and lack of access to basic care. BWF is building a program around rescue support, feeding drives, and welfare awareness — led by our Animal Welfare Department under Poonam Agrawal.",
+    highlights: ["Rescue and care support for injured or stray animals (launching 2026)", "Community feeding drives, starting in our first neighborhoods", "Vaccination and sterilization awareness camps", "Volunteer-led animal welfare education in local communities"],
+  },
 ];
 
 function WhatWeDoPage() {
-  useDocumentMeta("What We Do", "The community-focused programs we're building across Child Care, Women Empowerment, and Old Age People Care.");
+  useDocumentMeta("What We Do", "The community-focused programs we're building across Child Care, Women Empowerment, Old Age People Care, and Animal Welfare.");
   return (
     <>
       <PageHeader
