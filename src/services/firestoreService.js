@@ -55,7 +55,7 @@ export const saveContactMessage = async (data) => {
 // checkInData: { userId, userName, activity, location, beneficiaries, hours, notes, photo (dataUrl) }
 export const saveCheckIn = async (checkInData) => {
   requireDb();
-  const { userId, userName, activity, location, beneficiaries, hours, notes, photo } = checkInData;
+  const { userId, userName, activity, location, campaign, beneficiaries, hours, notes, photo } = checkInData;
 
   // Compress and store image directly in Firestore (no Storage bucket needed)
   const photoData = photo ? await compressImage(photo) : null;
@@ -65,6 +65,7 @@ export const saveCheckIn = async (checkInData) => {
     userName:      userName || '',
     activity:      activity || '',
     location:      location || '',
+    campaign:      campaign || '', // optional — which drive/campaign this check-in belongs to
     beneficiaries: Number(beneficiaries) || 0,
     hours:         Number(hours)         || 0,
     notes:         notes || '',

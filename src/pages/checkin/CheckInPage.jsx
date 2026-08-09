@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Camera, Upload, Medal, TrendingUp, MapPin, Clock, Award, Users, Heart, CheckCircle, BarChart3 } from "lucide-react";
+import { Camera, Upload, Medal, TrendingUp, MapPin, Clock, Award, Users, Heart, CheckCircle, BarChart3, Megaphone } from "lucide-react";
 import { Button, Card } from "../../components";
 import { getCurrentUser, isAuthenticated } from "../../services/authService";
 import { saveCheckIn, getCheckIns, getAllCheckIns } from "../../services/firestoreService";
@@ -21,6 +21,7 @@ function CheckInPage() {
   const [checkInData, setCheckInData] = useState({
     activity: "",
     location: "",
+    campaign: "",
     beneficiaries: "",
     hours: "",
     notes: "",
@@ -32,6 +33,7 @@ function CheckInPage() {
   const [userStats, setUserStats] = useState({ totalDrives: 0, currentBadge: null });
   const [success, setSuccess] = useState("");
   const [selectedCity, setSelectedCity] = useState("all");
+  const [selectedCampaign, setSelectedCampaign] = useState("all");
 
   useEffect(() => {
     if (!isAuthenticated()) {
@@ -92,6 +94,7 @@ function CheckInPage() {
       userName:      currentUser.name,
       activity:      checkInData.activity,
       location:      checkInData.location,
+      campaign:      checkInData.campaign,
       beneficiaries: parseInt(checkInData.beneficiaries),
       hours:         parseFloat(checkInData.hours),
       notes:         checkInData.notes,
@@ -105,6 +108,7 @@ function CheckInPage() {
         userName:      currentUser.name,
         activity:      checkInData.activity,
         location:      checkInData.location,
+        campaign:      checkInData.campaign,
         beneficiaries: checkInData.beneficiaries,
         hours:         checkInData.hours,
         notes:         checkInData.notes,
@@ -119,7 +123,7 @@ function CheckInPage() {
 
     await loadCheckInData(currentUser.id);
     setSuccess("Check-in successful!");
-    setCheckInData({ activity: "", location: "", beneficiaries: "", hours: "", notes: "", photo: null });
+    setCheckInData({ activity: "", location: "", campaign: "", beneficiaries: "", hours: "", notes: "", photo: null });
     setPreviewImage(null);
     setTimeout(() => setSuccess(""), 3000);
   };
@@ -151,12 +155,17 @@ function CheckInPage() {
     return Array.from(cities).sort();
   };
 
-  // Get filtered check-ins based on selected city
+  // Get all unique campaigns (excludes check-ins with no campaign set)
+  const getAllCampaigns = () => {
+    const campaigns = new Set(allCheckIns.map(c => c.campaign).filter(Boolean));
+    return Array.from(campaigns).sort();
+  };
+
+  // Get filtered check-ins based on selected city and/or campaign
   const getFilteredCheckIns = () => {
-    if (selectedCity === "all") {
-      return recentCheckIns;
-    }
-    return recentCheckIns.filter(c => c.location === selectedCity);
+    return recentCheckIns
+      .filter(c => selectedCity === "all" || c.location === selectedCity)
+      .filter(c => selectedCampaign === "all" || c.campaign === selectedCampaign);
   };
 
   // Calculate weekly stats
@@ -164,7 +173,9 @@ function CheckInPage() {
     const oneWeekAgo = new Date();
     oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
     
-    const dataToUse = selectedCity === "all" ? allCheckIns : allCheckIns.filter(c => c.location === selectedCity);
+    const dataToUse = allCheckIns
+      .filter(c => selectedCity === "all" || c.location === selectedCity)
+      .filter(c => selectedCampaign === "all" || c.campaign === selectedCampaign);
     const weeklyCheckIns = dataToUse.filter(
       c => new Date(c.timestamp) > oneWeekAgo
     );
@@ -179,7 +190,9 @@ function CheckInPage() {
   // Get city-wise statistics
   const getCityStats = () => {
     const cityMap = {};
-    const dataToUse = selectedCity === "all" ? allCheckIns : allCheckIns.filter(c => c.location === selectedCity);
+    const dataToUse = allCheckIns
+      .filter(c => selectedCity === "all" || c.location === selectedCity)
+      .filter(c => selectedCampaign === "all" || c.campaign === selectedCampaign);
     dataToUse.forEach(checkIn => {
       const city = checkIn.location;
       cityMap[city] = (cityMap[city] || 0) + 1;
@@ -191,10 +204,29 @@ function CheckInPage() {
       .slice(0, 8);
   };
 
+  // Get campaign-wise statistics (mirrors getCityStats)
+  const getCampaignStats = () => {
+    const campaignMap = {};
+    const dataToUse = allCheckIns
+      .filter(c => selectedCity === "all" || c.location === selectedCity)
+      .filter(c => selectedCampaign === "all" || c.campaign === selectedCampaign);
+    dataToUse.forEach(checkIn => {
+      if (!checkIn.campaign) return; // skip check-ins with no campaign tagged
+      campaignMap[checkIn.campaign] = (campaignMap[checkIn.campaign] || 0) + 1;
+    });
+
+    return Object.entries(campaignMap)
+      .map(([campaign, count]) => ({ campaign, count }))
+      .sort((a, b) => b.count - a.count)
+      .slice(0, 8);
+  };
+
   // Get activity type breakdown
   const getActivityBreakdown = () => {
     const activityMap = {};
-    const dataToUse = selectedCity === "all" ? allCheckIns : allCheckIns.filter(c => c.location === selectedCity);
+    const dataToUse = allCheckIns
+      .filter(c => selectedCity === "all" || c.location === selectedCity)
+      .filter(c => selectedCampaign === "all" || c.campaign === selectedCampaign);
     dataToUse.forEach(checkIn => {
       const activity = checkIn.activity;
       activityMap[activity] = (activityMap[activity] || 0) + 1;
@@ -236,6 +268,8 @@ function CheckInPage() {
   const filteredCheckIns = getFilteredCheckIns();
   const weeklyStats = getWeeklyStats();
   const cityStats = getCityStats();
+  const allCampaigns = getAllCampaigns();
+  const campaignStats = getCampaignStats();
   const activityBreakdown = getActivityBreakdown();
   const topVolunteers = getTopVolunteers();
 
@@ -442,13 +476,32 @@ function CheckInPage() {
                   </select>
                 </div>
               </div>
+
+              {allCampaigns.length > 0 && (
+                <div className="flex items-center gap-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-6 py-3 shadow-sm">
+                  <Megaphone className="text-accent" size={20} />
+                  <div>
+                    <p className="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase">Filter by campaign</p>
+                    <select
+                      value={selectedCampaign}
+                      onChange={(e) => setSelectedCampaign(e.target.value)}
+                      className="mt-1 border-0 bg-transparent text-base font-semibold text-slate-900 dark:text-white outline-none cursor-pointer"
+                    >
+                      <option value="all">All Campaigns</option>
+                      {allCampaigns.map(campaign => (
+                        <option key={campaign} value={campaign}>{campaign}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+              )}
               
-              {selectedCity !== "all" && (
+              {(selectedCity !== "all" || selectedCampaign !== "all") && (
                 <button
-                  onClick={() => setSelectedCity("all")}
+                  onClick={() => { setSelectedCity("all"); setSelectedCampaign("all"); }}
                   className="text-sm font-medium text-primary hover:text-primary/80 underline"
                 >
-                  Clear filter
+                  Clear filters
                 </button>
               )}
             </div>
@@ -490,6 +543,9 @@ function CheckInPage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                     <div className="absolute bottom-0 left-0 right-0 p-3 text-white">
                       <p className="font-bold text-sm">{checkIn.location}</p>
+                      {checkIn.campaign && (
+                        <p className="text-xs text-accent font-medium mt-0.5">📢 {checkIn.campaign}</p>
+                      )}
                       <p className="text-xs text-white/80 flex items-center gap-1 mt-1">
                         <Clock size={12} />
                         {formatTimeAgo(checkIn.timestamp)}
@@ -518,7 +574,7 @@ function CheckInPage() {
             </h2>
           </div>
 
-          <div className="grid gap-8 lg:grid-cols-2">
+          <div className={`grid gap-8 ${allCampaigns.length > 0 ? "lg:grid-cols-3" : "lg:grid-cols-2"}`}>
             {/* City Leaderboard */}
             <Card className="p-6">
               <div className="mb-6 flex items-center gap-3">
@@ -562,6 +618,52 @@ function CheckInPage() {
                 <p className="text-center text-slate-400 dark:text-slate-500 py-8">No data available yet</p>
               )}
             </Card>
+
+            {/* Campaign Leaderboard — only shown once at least one check-in has been tagged with a campaign */}
+            {allCampaigns.length > 0 && (
+              <Card className="p-6">
+                <div className="mb-6 flex items-center gap-3">
+                  <div className="rounded-full bg-accent/10 p-3">
+                    <Megaphone className="text-accent" size={24} />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white">Top Campaigns</h3>
+                    <p className="text-sm text-slate-500 dark:text-slate-400">Most active drives right now</p>
+                  </div>
+                </div>
+
+                {campaignStats.length > 0 ? (
+                  <div className="space-y-4">
+                    {campaignStats.map((c, index) => {
+                      const maxCount = campaignStats[0]?.count || 1;
+                      const percentage = (c.count / maxCount) * 100;
+
+                      return (
+                        <div key={c.campaign}>
+                          <div className="flex justify-between items-center mb-2">
+                            <div className="flex items-center gap-2">
+                              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-accent/10 text-sm font-bold text-accent">
+                                {index + 1}
+                              </span>
+                              <span className="font-semibold text-slate-700 dark:text-slate-200">{c.campaign}</span>
+                            </div>
+                            <span className="text-lg font-bold text-accent">{c.count}</span>
+                          </div>
+                          <div className="h-2.5 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-700">
+                            <div
+                              className="h-full rounded-full bg-accent"
+                              style={{ width: `${percentage}%` }}
+                            />
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <p className="text-center text-slate-400 dark:text-slate-500 py-8">No data available yet</p>
+                )}
+              </Card>
+            )}
 
             {/* Activity Type Breakdown */}
             <Card className="p-6">
@@ -748,6 +850,18 @@ function CheckInPage() {
                       placeholder="City/Village name"
                       className={FORM_INPUT}
                       required
+                    />
+                  </div>
+
+                  <div>
+                    <label className="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">Campaign / Drive Name (Optional)</label>
+                    <input
+                      type="text"
+                      name="campaign"
+                      value={checkInData.campaign}
+                      onChange={handleChange}
+                      placeholder="e.g. Diwali Food Drive 2026"
+                      className={FORM_INPUT}
                     />
                   </div>
 
