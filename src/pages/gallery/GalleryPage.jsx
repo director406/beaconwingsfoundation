@@ -4,16 +4,16 @@ import useDocumentMeta from "../../hooks/useDocumentMeta";
 import { PageHeader } from "../../components";
 
 const galleryImages = [
-  { url: "/images/activity-children-peace.jpeg",     title: "Community Play Session",      category: "Community"   },
-  { url: "/images/activity-children-session.jpeg",   title: "Learning & Fun Session",      category: "Child Care"  },
-  { url: "/images/activity-stationery.jpeg",         title: "Stationery Distribution",     category: "Child Care"  },
-  { url: "/images/activity-gift-distribution.jpeg",  title: "Gift & Snack Distribution",   category: "Events"      },
-  { url: "/images/activity-food-bowls.jpeg",         title: "Nutrition Drive",             category: "Child Care"  },
-  { url: "/images/activity-food-field.jpeg",         title: "Food Distribution Drive",     category: "Child Care"  },
-  { url: "/images/community-volunteers-group.jpeg",  title: "Volunteers with Community",   category: "Community"   },
-  { url: "/images/volunteer-evening-kids.jpeg",      title: "Evening Activity Session",    category: "Events"      },
-  { url: "/images/volunteer-group-selfie.jpeg",      title: "Team & Community Connect",    category: "Community"   },
-  { url: "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=800&h=600&fit=crop", title: "Women Empowerment",  category: "Women"       },
+  { url: "/images/activity-notebook-distribution-1.jpeg", title: "Notebook Distribution Drive",    category: "Child Care"  },
+  { url: "/images/activity-notebook-distribution-2.jpeg", title: "Books & Smiles",                 category: "Child Care"  },
+  { url: "/images/activity-notebook-distribution-3.jpeg", title: "Ready to Learn",                 category: "Child Care"  },
+  { url: "/images/activity-notebook-distribution-4.jpeg", title: "Celebrating New Notebooks",       category: "Child Care"  },
+  { url: "/images/activity-snack-distribution.jpeg",      title: "Snack Distribution Drive",        category: "Events"      },
+  { url: "/images/activity-birthday-celebration-1.jpeg",  title: "Birthday Celebration with Kids",  category: "Events"      },
+  { url: "/images/activity-birthday-celebration-2.jpeg",  title: "Celebrating Together",            category: "Events"      },
+  { url: "/images/activity-group-game.jpeg",              title: "Fun & Games Session",             category: "Community"   },
+  { url: "/images/activity-icebreaker-game.jpeg",         title: "Icebreaker Activity",             category: "Community"   },
+  { url: "/images/community-team-selfie.jpeg",             title: "Team & Community Connect",        category: "Community"   },
 ];
 
 function GalleryPage() {

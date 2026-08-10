@@ -28,7 +28,7 @@ const carouselSlides = [
     sub: "We bring companionship and care to our elders' doorsteps.",
   },
   {
-    url: "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=1600&h=900&fit=crop",
+    url: "/images/community-team-selfie.jpeg",
     fallback: "from-purple-900 to-slate-900",
     headline: "Women hold up half the sky.",
     sub: "We empower them to reach it — and beyond.",
@@ -59,19 +59,19 @@ const impactStats = [
 const journeyEras = [
   {
     era: "Phase 1 · 2026",
-    image: "/images/activity-stationery.jpeg",
+    image: "/images/activity-notebook-distribution-2.jpeg",
     status: "In Progress", region: "Delhi NCR", focus: "Lean Launch",
     desc: "Registering as a Section 8 company, opening our bank account, and standing up our first Child Care, Women Empowerment, and Old Age Care programs in Delhi.",
   },
   {
     era: "Phase 2 · Growth",
-    image: "/images/activity-food-bowls.jpeg",
+    image: "/images/activity-snack-distribution.jpeg",
     status: "Planned", region: "NCR + neighbouring states", focus: "Scaling Programs",
     desc: "Building our volunteer base, securing 12A/80G status, and expanding proven programs beyond our first city once Phase 1 is stable.",
   },
   {
     era: "Phase 3 · Multi-State",
-    image: "/images/activity-gift-distribution.jpeg",
+    image: "/images/activity-birthday-celebration-1.jpeg",
     status: "Future", region: "Multiple states", focus: "Sustainable Chapters",
     desc: "CSR-fund eligibility unlocks new partnerships; self-sustaining local chapters replicate our model across additional regions.",
   },
@@ -196,7 +196,7 @@ function HomePage() {
             </div>
           </div>
           <div className="relative">
-            <img src="/images/activity-children-peace.jpeg" alt="Community volunteers"
+            <img src="/images/activity-notebook-distribution-1.jpeg" alt="Community volunteers"
               className="w-full rounded-2xl object-cover shadow-xl"
               onError={(e) => { e.target.src = ""; e.target.className = "hidden"; }} />
             <div className="absolute -bottom-5 -left-5 rounded-xl bg-primary px-6 py-4 text-white shadow-lg">
