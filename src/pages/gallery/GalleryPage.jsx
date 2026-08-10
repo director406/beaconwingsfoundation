@@ -14,19 +14,22 @@ const galleryImages = [
   { url: "/images/activity-group-game.jpeg",              title: "Fun & Games Session",             category: "Community"   },
   { url: "/images/activity-icebreaker-game.jpeg",         title: "Icebreaker Activity",             category: "Community"   },
   { url: "/images/community-team-selfie.jpeg",             title: "Team & Community Connect",        category: "Community"   },
-  // Health Camp — organized 2 August, Lucknow. 20 photos were provided;
-  // many were near-identical burst shots of the same banner setup, so
-  // this is a curated selection of the most distinct moments rather
-  // than every frame — avoids a repetitive-looking gallery grid.
-  { url: "/images/healthcamp-registration-1.jpeg",     title: "Health Camp Registration",       category: "Healthcare"  },
-  { url: "/images/healthcamp-pediatric-checkup.jpeg",  title: "Pediatric Check-up",             category: "Healthcare"  },
-  { url: "/images/healthcamp-consultation-1.jpeg",     title: "Free Health Consultation",       category: "Healthcare"  },
-  { url: "/images/healthcamp-consultation-elderly.jpeg", title: "Health Check-up for Elders",   category: "Healthcare"  },
-  { url: "/images/healthcamp-family-checkup.jpeg",     title: "Family Health Check-up",         category: "Healthcare"  },
-  { url: "/images/healthcamp-bp-checkup.jpeg",         title: "Blood Pressure Screening",       category: "Healthcare"  },
-  { url: "/images/healthcamp-banner-1.jpeg",           title: "Beacon Wings Health Camp",       category: "Healthcare"  },
-  { url: "/images/healthcamp-setup-2.jpeg",            title: "Community Health Camp",          category: "Healthcare"  },
-  { url: "/images/healthcamp-team-1.jpeg",             title: "Our Health Camp Team — Lucknow", category: "Healthcare"  },
+  // Health Camp — organized 5 July 2026, Lucknow City. Led by Director
+  // Prachi Nirmal, assisted by Akansha Srivastav; doctors on site
+  // distributed medicines, conducted full check-ups, and ran lab tests.
+  // 20 photos were provided; many were near-identical burst shots of
+  // the same banner setup, so this is a curated selection of the most
+  // distinct moments rather than every frame — avoids a repetitive-
+  // looking gallery grid.
+  { url: "/images/healthcamp-registration-1.jpeg",     title: "Health Camp Registration — Lucknow", category: "Healthcare"  },
+  { url: "/images/healthcamp-pediatric-checkup.jpeg",  title: "Pediatric Check-up",                 category: "Healthcare"  },
+  { url: "/images/healthcamp-consultation-1.jpeg",     title: "Doctors Distributing Medicines",     category: "Healthcare"  },
+  { url: "/images/healthcamp-consultation-elderly.jpeg", title: "Health Check-up for Elders",       category: "Healthcare"  },
+  { url: "/images/healthcamp-family-checkup.jpeg",     title: "Family Health Check-up",             category: "Healthcare"  },
+  { url: "/images/healthcamp-bp-checkup.jpeg",         title: "Blood Pressure Screening",           category: "Healthcare"  },
+  { url: "/images/healthcamp-banner-1.jpeg",           title: "Beacon Wings Health Camp",           category: "Healthcare"  },
+  { url: "/images/healthcamp-setup-2.jpeg",            title: "Community Health Camp",              category: "Healthcare"  },
+  { url: "/images/healthcamp-team-1.jpeg",             title: "Led by Director Prachi Nirmal & Team", category: "Healthcare"  },
 ];
 
 function GalleryPage() {
