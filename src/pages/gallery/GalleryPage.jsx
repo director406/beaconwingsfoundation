@@ -17,19 +17,31 @@ const galleryImages = [
   // Health Camp — organized 5 July 2026, Lucknow City. Led by Director
   // Prachi Nirmal, assisted by Akansha Srivastav; doctors on site
   // distributed medicines, conducted full check-ups, and ran lab tests.
-  // 20 photos were provided; many were near-identical burst shots of
-  // the same banner setup, so this is a curated selection of the most
-  // distinct moments rather than every frame — avoids a repetitive-
-  // looking gallery grid.
-  { url: "/images/healthcamp-registration-1.jpeg",     title: "Health Camp Registration — Lucknow", category: "Healthcare"  },
-  { url: "/images/healthcamp-pediatric-checkup.jpeg",  title: "Pediatric Check-up",                 category: "Healthcare"  },
-  { url: "/images/healthcamp-consultation-1.jpeg",     title: "Doctors Distributing Medicines",     category: "Healthcare"  },
-  { url: "/images/healthcamp-consultation-elderly.jpeg", title: "Health Check-up for Elders",       category: "Healthcare"  },
-  { url: "/images/healthcamp-family-checkup.jpeg",     title: "Family Health Check-up",             category: "Healthcare"  },
-  { url: "/images/healthcamp-bp-checkup.jpeg",         title: "Blood Pressure Screening",           category: "Healthcare"  },
-  { url: "/images/healthcamp-banner-1.jpeg",           title: "Beacon Wings Health Camp",           category: "Healthcare"  },
-  { url: "/images/healthcamp-setup-2.jpeg",            title: "Community Health Camp",              category: "Healthcare"  },
-  { url: "/images/healthcamp-team-1.jpeg",             title: "Led by Director Prachi Nirmal & Team", category: "Healthcare"  },
+  // All 20 submitted photos are used except 2 (originally photos 14 and
+  // 18 as shown in chat) that were excluded for genuine quality reasons
+  // — both are dominated by dark tent-canopy fabric covering most of
+  // the frame. Every file below was individually viewed and verified
+  // to correctly match its filename before being added — an earlier
+  // version of this section had several images mismatched to the
+  // wrong titles, which is what prompted this rebuild.
+  { url: "/images/healthcamp-01.jpeg", title: "Our Health Camp Team — Lucknow",     category: "Healthcare" },
+  { url: "/images/healthcamp-02.jpeg", title: "Team Ready to Serve",                category: "Healthcare" },
+  { url: "/images/healthcamp-03.jpeg", title: "Blood Pressure Check-up",            category: "Healthcare" },
+  { url: "/images/healthcamp-04.jpeg", title: "Health Camp Consultation",           category: "Healthcare" },
+  { url: "/images/healthcamp-05.jpeg", title: "Doctors Attending to Patients",      category: "Healthcare" },
+  { url: "/images/healthcamp-06.jpeg", title: "Community Health Check-up",          category: "Healthcare" },
+  { url: "/images/healthcamp-07.jpeg", title: "Patients Receiving Care",            category: "Healthcare" },
+  { url: "/images/healthcamp-08.jpeg", title: "Beacon Wings Health Camp Setup",     category: "Healthcare" },
+  { url: "/images/healthcamp-09.jpeg", title: "Medicine Distribution",              category: "Healthcare" },
+  { url: "/images/healthcamp-10.jpeg", title: "On-the-Spot Health Screening",       category: "Healthcare" },
+  { url: "/images/healthcamp-11.jpeg", title: "Volunteers Assisting Patients",      category: "Healthcare" },
+  { url: "/images/healthcamp-12.jpeg", title: "Health Camp in Progress",            category: "Healthcare" },
+  { url: "/images/healthcamp-13.jpeg", title: "Community Members at the Camp",      category: "Healthcare" },
+  { url: "/images/healthcamp-15.jpeg", title: "Health Check-up for Elders",         category: "Healthcare" },
+  { url: "/images/healthcamp-16.jpeg", title: "Consultation for an Elderly Patient", category: "Healthcare" },
+  { url: "/images/healthcamp-17.jpeg", title: "Families Waiting for Check-up",      category: "Healthcare" },
+  { url: "/images/healthcamp-19.jpeg", title: "Street Health Camp — Lucknow",       category: "Healthcare" },
+  { url: "/images/healthcamp-20.jpeg", title: "Medicine Handover",                  category: "Healthcare" },
 ];
 
 function GalleryPage() {

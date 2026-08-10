@@ -10,7 +10,7 @@ import useDocumentMeta from "../../hooks/useDocumentMeta";
 
 const carouselSlides = [
   {
-    url: "/images/healthcamp-registration-1.jpeg",
+    url: "/images/healthcamp-19.jpeg",
     fallback: "from-green-900 to-slate-900",
     headline: "Poverty has millions of people in its grip.",
     sub: "We're here to change that — one community at a time.",
@@ -22,7 +22,7 @@ const carouselSlides = [
     sub: "We make quality education accessible to all.",
   },
   {
-    url: "/images/healthcamp-bp-checkup.jpeg", // real elder healthcare photo — replaces the earlier placeholder
+    url: "/images/healthcamp-03.jpeg", // real elder healthcare photo (BP check-up) — replaces the earlier placeholder
     fallback: "from-teal-900 to-slate-900",
     headline: "No one should grow old alone.",
     sub: "We bring companionship and care to our elders' doorsteps.",
