@@ -10,19 +10,19 @@ import useDocumentMeta from "../../hooks/useDocumentMeta";
 
 const carouselSlides = [
   {
-    url: "/images/slider1.jpeg",
+    url: "/images/activity-group-game.jpeg",
     fallback: "from-green-900 to-slate-900",
     headline: "Poverty has millions of people in its grip.",
     sub: "We're here to change that — one community at a time.",
   },
   {
-    url: "/images/slider2.jpeg",
+    url: "/images/activity-notebook-distribution-3.jpeg",
     fallback: "from-teal-900 to-green-900",
     headline: "Every child deserves a chance to learn.",
     sub: "We make quality education accessible to all.",
   },
   {
-    url: "/images/slider3.jpeg",
+    url: "/images/activity-icebreaker-game.jpeg", // no Old Age Care-specific photo available yet
     fallback: "from-teal-900 to-slate-900",
     headline: "No one should grow old alone.",
     sub: "We bring companionship and care to our elders' doorsteps.",
