@@ -20,7 +20,6 @@ export const ROUTES = {
   DONATE: "/donate",
   VOLUNTEER: "/volunteer",
   CONTACT: "/contact",
-  LEGAL: "/legal",
   CHECKIN: "/checkin",
   CERTIFICATE: "/certificate",
   LOGIN: "/login",

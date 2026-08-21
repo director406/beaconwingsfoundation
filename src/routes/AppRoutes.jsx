@@ -25,7 +25,6 @@ const CertificatePage = lazy(() => import("../pages/checkin/CertificatePage"));
 const LoginPage = lazy(() => import("../pages/auth/LoginPage"));
 const SignupPage = lazy(() => import("../pages/auth/SignupPage"));
 const AdminDashboardPage = lazy(() => import("../pages/admin/AdminDashboardPage"));
-const LegalPage = lazy(() => import("../pages/legal/LegalPage"));
 
 /**
  * Application Routes Configuration
@@ -46,7 +45,6 @@ function AppRoutes() {
           <Route path={ROUTES.DONATE} element={<DonatePage />} />
           <Route path={ROUTES.VOLUNTEER} element={<VolunteerPage />} />
           <Route path={ROUTES.CONTACT} element={<ContactPage />} />
-          <Route path={ROUTES.LEGAL} element={<LegalPage />} />
           {/* CheckIn was previously a "no layout" route with no Navbar/
               Footer at all — a big part of why it felt disconnected from
               the rest of the site. It's reached via the main nav like

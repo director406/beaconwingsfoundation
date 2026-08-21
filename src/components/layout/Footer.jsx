@@ -162,7 +162,6 @@ function Footer() {
         <div className="container-max flex flex-col items-center justify-between gap-2 py-5 text-xs sm:flex-row">
           <p>© {new Date().getFullYear()} {APP_INFO.name}. All rights reserved.</p>
           <div className="flex items-center gap-4">
-            <Link to={ROUTES.LEGAL} className="transition hover:text-primary">Legal &amp; Documents</Link>
             <span className="text-slate-400 dark:text-slate-500">Made with ♥ for a better India</span>
           </div>
         </div>

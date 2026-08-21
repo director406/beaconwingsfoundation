@@ -64,7 +64,7 @@ const programs = [
     desc: "Health check-ups and wellness support tailored for elderly needs, connecting seniors with essential care.",
     stats: ["Launching 2026", "Delhi NCR"],
   },
-  // Animal Welfare — Department Head: Poonam Agrawal
+  // Animal Welfare
   {
     id: 9, name: "Stray Animal Rescue & Care", category: "Animal Welfare",
     icon: PawPrint,

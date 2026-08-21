@@ -22,7 +22,6 @@ const teamMembers = [
   { name: "Nitin Singh",        role: "Head of Programs",                   image: "/images/team-nitin.jpeg", color: "bg-cyan-600"    },
   { name: "Krishna Mohan",      role: "Child Development & Education Lead", image: "/images/team-.png", color: "bg-indigo-600" },
   { name: "Amit Kumar",          role: "Technology & Digital Support Lead",  image: "/images/team-amit.jpeg", color: "bg-slate-600"      },
-  { name: "Poonam Agrawal",      role: "Animal Welfare — Department Head",   image: "/images/team-poonam.jpeg", color: "bg-lime-600"    },
 ];
 
 function AboutPage() {

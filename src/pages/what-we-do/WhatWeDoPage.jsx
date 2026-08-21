@@ -34,7 +34,7 @@ const pillars = [
     icon: PawPrint, title: "Animal Welfare", tagline: "Every life deserves care",
     color: { bg: "bg-lime-600", light: "bg-lime-50 dark:bg-lime-900/20", text: "text-lime-700 dark:text-lime-400", dot: "bg-lime-600" },
     image: "/images/activity-group-game.jpeg", // no Animal Welfare-specific photo available yet; neutral community photo
-    desc: "Street animals and strays in our communities often face neglect, injury, and lack of access to basic care. BWF is building a program around rescue support, feeding drives, and welfare awareness — led by our Animal Welfare Department under Poonam Agrawal.",
+    desc: "Street animals and strays in our communities often face neglect, injury, and lack of access to basic care. BWF is building a program around rescue support, feeding drives, and welfare awareness.",
     highlights: ["Rescue and care support for injured or stray animals (launching 2026)", "Community feeding drives, starting in our first neighborhoods", "Vaccination and sterilization awareness camps", "Volunteer-led animal welfare education in local communities"],
   },
 ];
